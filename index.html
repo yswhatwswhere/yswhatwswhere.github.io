@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>You Say What We Say Where</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
     <header id="main_header">
@@ -34,13 +35,15 @@
         </ul>
     </nav>
     <section id="main_section">
-        <form action="recipe.html">
-            <fieldset>
-                <input id="seachbox" name="dish" type="search" placeholder="eg. Pizza Margherita" required autofocus>
-                <button type="submit">Search</button>
-            </fieldset>
-        </form>
-    <section>
+        <div id="home_section">
+            <form id="search" action="recipe.html">
+                <fieldset>
+                    <input name="dish" type="search" placeholder="eg. Pizza Margherita" required autofocus>
+                    <button type="submit">Search</button>
+                </fieldset>
+            </form>
+        </div>
+    </section>
     <footer id="main_footer">
         <p>
             Copyright &copy;
@@ -51,7 +54,7 @@
             YouSayWhatWeSayWhere - Eurecom
         </p>
         <p>
-            <img style="width: 2%; height: 2%;"
+            <img style="width: 3%; height: 3%;"
                 src="./HTML5Logo.svg"
                 alt="This page is written in HTML5!" />
             <img style="border:0;width:88px;height:31px"
