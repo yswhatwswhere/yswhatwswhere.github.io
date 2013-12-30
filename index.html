@@ -1,70 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link href="./stylesheet.css" rel=stylesheet type="text/css">
-<meta charset = "UTF-8">
-<title>You say what we say where</title>
+    <meta charset="utf-8">
+    <title>You Say What We Say Where</title>
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
 <body>
 
-<div class="main_container">
-<div class="box">
-<img src="./main_image.jpeg" style="float:left; border-radius: 10px;"> </img>
-<div id="title"> YOU SAY WHAT WE SAY WHERE</div>
-<nav id="box_nav">
-<ul>
-            <li><a href="#">Log in</a></li>
-            <li><a href="#">Sign up</a></li>
-</ul>
-</nav>
-</div>
+<div id="main_container">
 
-<div id="photo_list">
-
-<div class="grow">
- <img src="./photo/recipe1.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
- <img src="./photo/recipe2.jpeg">
-</div>
-</div>
-<nav id="main_nav">
-        
+    <header id="title" class="box">
+        <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
+        <p>You Say What We Say Where</p>
+    </header>
+    <nav id="account">
         <ul>
-            <li><a href="#">Create my own recipe</a></li>
-            <li><a href="#">Recommendation</a></li>
-            <li><a href="#">Recently viewed</a></li>
-        </ul>
-		
-        <ul>
-            <li><a href="#">My favourites</a></li>
-            <li><a href="#">New shopping list</a></li>
-            <li><a href="#">Nearest shop</a></li>
-        </ul>
-        
-        <ul>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Give your feedback</a></li>
-            <li><a href="#">Demo</a></li>
+        <li>
+        <a><strong>my Account</strong></a>
+            <ul>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#">Sign up</a></li>
+            </ul>
+        </li>
         </ul>
     </nav>
+    <div>
+    <nav id="main_nav">
+            <ul>
+                <li><a href="#">Create my own recipe</a></li>
+                <li><a href="#">Recommendation</a></li>
+                <li><a href="#">Recently viewed</a></li>
+            </ul>
+		
+            <ul>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="#">New shopping list</a></li>
+                <li><a href="#">Nearest shop</a></li>
+            </ul>
+        
+            <ul style="border: 0px; margin: 0px;">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Give your feedback</a></li>
+                <li><a href="#">Demo</a></li>
+            </ul>
+    </nav>
 
-<article>
-   <img  style="display:block; margin-left:auto; margin-right:auto;"src="./logo.png"/>
-  <form id="form" action="recipe.html">
-		 <input name="dish" type="search" placeholder="eg. Pizza Margherita" required autofocus >
-	      <button type="submit">Search</button>    
-	</form>	
-				
-</article>	
-<footer class="box">
-<div style="height: 100px; text-align: center;">
- <p>
+    <section id="home_main">
+        <form id="form" action="recipe.html">
+            <span>
+        	    <input name="dish" type="search" placeholder="eg. Pizza Margherita" required autofocus />
+                <button type="submit">Search</button>
+            </span>
+	    </form>
+        <img src="cooker.png" alt="Cooker" />
+        <article class="slide">
+            <a href="#"><img src="./photo/recipe1.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
+        </article>
+    </section>
+    </div>
+
+    <footer class="box" style="text-align: center;">
+        <p>
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()
@@ -80,8 +84,10 @@
                 src="http://jigsaw.w3.org/css-validator/images/vcss"
                 alt="Valid CSS!" />
         </p>
+    </footer>
+
 </div>
-</footer>
-</div>
+
 </body>
+
 </html>
