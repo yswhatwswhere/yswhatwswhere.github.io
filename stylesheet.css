@@ -51,14 +51,18 @@ body {
     padding: 0px;
 }
 
-#home_main {
-    margin-top: 20px;
-    text-align: center;
-    margin-left: 180px;
-    padding-bottom: 20px;
+#title a {
+    text-decoration: none;
 }
 
-#home_main span {
+#home_main {
+    margin-top: 20px;
+    margin-left: 180px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#home_main form span {
     padding: 17px;
     background: #f0f0f0;
     /* Border style */
@@ -74,11 +78,26 @@ body {
     text-align: center;
 }
 
+#home_main form div {
+    margin: auto;
+    width: 500px;
+    padding: 17px;
+    background: #f0f0f0;
+    /* Border style */
+    border: 1px solid #cccccc;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+
+    /* Border Shadow */
+    -moz-box-shadow: 2px 2px 2px #cccccc;
+    -webkit-box-shadow: 2px 2px 2px #cccccc;
+    box-shadow: 2px 2px 2px #cccccc;
+}
+
 #form {
     margin: 0px;
     padding: 0px;
-    margin-top: 40px;
-    text-align: center;
     /* width: 410px; */
 }
     
