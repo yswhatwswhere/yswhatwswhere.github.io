@@ -250,3 +250,88 @@ nav a:active {
 #account ul li:hover ul {
     display: block;
 }
+
+
+#description_area{
+	clear:left;
+	width: 500px; 
+	height: 200px; 
+	padding: 15px; 
+	overflow:auto;
+	border: 2px solid black; 
+	background: #f0f0f0;
+    border: 1px solid #cccccc;
+   -moz-border-radius: 7px;
+   -webkit-border-radius: 7px;
+    border-radius: 7px;
+   -moz-box-shadow: 2px 2px 2px #cccccc;
+   -webkit-box-shadow: 2px 2px 2px #cccccc;
+    box-shadow: 2px 2px 2px #cccccc;
+    margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	display: block;
+	text-align:center;
+	font: bold 15px 'trebuchet MS', Arial, Helvetica;
+}
+
+
+
+#ingredients_list{	
+	float: left;
+	counter-reset:li;
+	padding: 15px;  
+	background: #f0f0f0;
+	-moz-border-radius: 7px;
+   -webkit-border-radius: 7px;
+    border-radius: 7px;
+   -moz-box-shadow: 2px 2px 2px #cccccc;
+   -webkit-box-shadow: 2px 2px 2px #cccccc;
+    box-shadow: 2px 2px 2px #cccccc;
+	list-style:none;
+	text-align:left;
+	font: bold 15px 'trebuchet MS', Arial, Helvetica;
+   }
+   
+ #ingredients_list li:before {
+    content:counter(li); /* Use the counter as content */
+    counter-increment:li; /* Increment the counter by 1 */
+	padding:4px;
+    color:#fff;
+    background:#666;
+	border-radius: 50%;
+    font-weight:bold;
+    font-family:"Helvetica Neue", Arial, sans-serif;
+	width: 15px;
+    text-align: center;
+	margin-right: 10px;
+	margin-bottom: 2px;
+	display: inline-block;
+    
+}
+
+---------------------------------
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating  span {
+  display: inline-block;
+  width: 10px;
+}
+.rating  span:hover,
+.rating  span:hover ~ span {
+  color: transparent;
+}
+.rating span:hover:before,
+.rating span:hover ~ span:before {
+    content: "\2605";
+	color: gold;
+}
+
+#vfrags a {
+    cursor: pointer;
+}
+
+---------------------------------

@@ -1,42 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title>You Say What We Say Where</title>
-    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
-<body>
-    <header id="main_header">
-        <h1><a href="index.html">You Say What We Say Where</a></h1>
+
+<script type="text/javascript" src="food_database.json"></script>
+<script>
+
+var name;
+var src_photo;
+var src_video;
+var frags;
+var ingredients;
+var description;
+var rating;
+
+function getParameter() {
+	var parameter = String(location.search.substring(1).split('?'));
+	res = parameter.split("=");
+	pname = res[0];
+	pvalue = res[1].replace("+"," ");
+	
+	var mydata = JSON.parse(data);
+	for (i in mydata){
+		if(mydata[i].name.toLowerCase() == pvalue.toLowerCase()){
+			name=mydata[i].name;
+			src_photo=mydata[i].photo;
+			ingredients=mydata[i].ingredients;
+			rating=parseInt(mydata[i].rating,10); 
+			description=mydata[i].description;
+            src_video=mydata[i].video;
+            frags=mydata[i].videoFrags;
+									}
+		}
+		photo(src_photo);				
+		info();
+		}
+
+
+function photo(src_photo){
+	var canvas = document.getElementById('canvas_img');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+	  var x = 50;
+      var y = 30;
+      var width = 200;
+      var height = 137;
+	  imageObj.onload = function() {
+        context.drawImage(imageObj, x, y, width, height);
+      };
+      imageObj.src = src_photo;
+	  fig = document.getElementById("figcaption");
+	  fig.innerHTML = pvalue.toUpperCase();
+}
+
+function info(){
+	for(i=1; i<=rating; i++){
+		star = document.getElementById("star"+i);
+		star.innerHTML = '&#x2605';
+	}
+	description_area = document.getElementById("description_area");
+	description_area.value = description;
+	ingredients_list = document.getElementById("ingredients_list");
+	for (i in ingredients){
+		 var newItem = document.createElement("li");                
+         var newItemValue = document.createTextNode(ingredients[i]); 
+         newItem.appendChild(newItemValue);
+         ingredients_list.appendChild(newItem);
+	}
+    video = document.getElementById("vrec");
+    video.src = src_video;
+    frag_list = document.getElementById("vfrags");
+    for (i in frags){
+        var newItem = document.createElement("li");
+        //var newSpan = document.createElement("span");
+        //var newLink = document.createElement("a");
+        //newLink.onclick = function() { chapter(i) };
+        //newLink.href = "#";
+        //newLink.innerHTML = frags[i][0];
+        //newItem.appendChild(newLink);
+  //      alert("Hi!");
+        newItem.innerHTML = "<a onclick=\"chapter(&quot;"+frags[i][1]+"&quot;)\">"+frags[i][0]+"</a>";
+        //newSpan.innerHTML = "<a href=\"#\" onclick=\"chapter("+frags[i][1]+")\">"+frags[i][0]+"</a>";
+        //newItem.appendChild(newSpan);
+    //    alert("Ha!");
+        frag_list.appendChild(newItem);
+    }
+}
+
+function chapter(frag) {
+    var v = document.getElementById("vrec");
+    v.setAttribute("src", src_video+frag);
+    v.setAttribute("autoplay", true);
+    return false;
+}
+
+</script>
+
+<body onload="getParameter()">
+
+<div id="main_container">
+
+    <header id="title" class="box">
+        <a href="index.html">
+            <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
+        </a>
+        <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="main_nav">
-        <h1><a href="#">myAccount</a></h1>
+    <nav id="account">
         <ul>
-            <li><a href="#">Log in</a></li>
-            <li><a href="#">Sign up</a></li>
-        </ul>
-        <h1>Find a recipe</h1>
-        <ul>
-            <li><a href="#">Create my own recipe</a></li>
-            <li><a href="#">Recommendation</a></li>
-            <li><a href="#">Recently viewed</a></li>
-        </ul>
-        <h1>My list</h1>
-        <ul>
-            <li><a href="#">My favourites</a></li>
-            <li><a href="#">New shopping list</a></li>
-            <li><a href="#">Nearest shop</a></li>
-        </ul>
-        <h1>More</h1>
-        <ul>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Give your feedback</a></li>
-            <li><a href="#">Demo</a></li>
+        <li>
+        <a><strong>my Account</strong></a>
+            <ul>
+                <li><a href="login.html">Log in</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+            </ul>
+        </li>
         </ul>
     </nav>
-    <section id="main_section">
-    </section>
-    <footer id="main_footer">
+    
+    <nav id="main_nav">
+            <ul>
+                <li><a href="createrecipe.html">Create my own recipe</a></li>
+                <li><a href="recommendation.html">Recommendation</a></li>
+                <li><a href="#">Recently viewed</a></li>
+            </ul>
+		
+            <ul>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="#">New shopping list</a></li>
+                <li><a href="#">Nearest shop</a></li>
+            </ul>
+        
+            <ul style="border: 0px; margin: 0px;">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Give your feedback</a></li>
+                <li><a href="#">Demo</a></li>
+            </ul>
+    </nav>
+
+        <div id="home_main" style="float:left; dislpay:block; margin-left:100px;">
+		<div style="float:left;">
+		<figure style="float:left; border: 1px solid #cccccc;">
+		<canvas id="canvas_img" width="300" height="200"></canvas>
+		<figcaption id="figcaption"></figcaption>
+			
+			<span id="star1"> &#9734 </span>
+			<span id="star2"> &#9734 </span>
+			<span id="star3"> &#9734 </span>
+			<span id="star4"> &#9734 </span>
+			<span id="star5"> &#9734 </span>
+
+		</figure>
+		
+		<ol id="ingredients_list"></ol>
+		</div>
+		
+		<div id="form">
+		<span>
+		<button type="button" style="">Save in my favourite</button>
+		<button type="button">Search Shop</button>
+		</span>
+		</div>
+        <br />
+		<video id="vrec" controls autoload></video>
+        <ul id="vfrags"></ul>
+		<textarea id="description_area"></textarea>
+		</div>
+    <footer class="box" style="text-align: center;">
         <p>
             Copyright &copy;
             <script type="text/javascript">
@@ -46,7 +180,7 @@
             YouSayWhatWeSayWhere - Eurecom
         </p>
         <p>
-            <img style="width: 2%; height: 2%;"
+            <img style="width: 3%; height: 3%;"
                 src="./HTML5Logo.svg"
                 alt="This page is written in HTML5!" />
             <img style="border:0;width:88px;height:31px"
@@ -54,5 +188,9 @@
                 alt="Valid CSS!" />
         </p>
     </footer>
+
+</div>
+
 </body>
+
 </html>
