@@ -33,7 +33,7 @@
             <ul>
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
                 <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="#">Recently viewed</a></li>
+                <li><a href="recentlyviewed.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
@@ -51,27 +51,70 @@
 
     <section id="home_main">
         <div>
-    <h1 id="titolo">List of Recommended Recipes</h1>
-    <br />
-</div>
+            <h1 id="titolo">List of Recommended Recipes</h1>
+            <br>
+         </div>
 <article id="article4">
+<div class="allinea" style="width:60%;">
 <table id="table1">
   <tr>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/food1.png"/></th>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/food2.jpg"/></th>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/food2.jpg"/></td>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/food1.png"/></td>
   </tr> 
   <tr>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/food3.jpg"/></th>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/recipe2.jpeg"/></th>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe2.jpeg"/></td>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe3.jpeg"/></td>
   </tr>
   <tr>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/recipe3.jpeg"/></th>
-   <th><img  style="display:block; width:30%; height: 30%; margin-left:auto; margin-right:auto;"src="./photo/recipe4.jpeg"/></th>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe5.jpeg"/></td>
+   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe1.jpeg"/></td>
   </tr>             
 </table>
-    </section>
+</div>
+<div class="allinea" style="width:30%;">
+<h2>Filter</h2>
+<form action="" style="width:120%;">
+   <fieldset>
+      <legend>Price</legend>
+      <br>
+      <select name="" >
+       <option value="" selected="selected"> 0€ - 10€ </option>
+       <option value="">10€ - 30€ </option>
+       <option value=""> > 30€</option>
+     </select>
+     </fieldset>
+</form>
+<br>
+<form action="" style="width:120%;">
+   <fieldset>
+      <legend>Required Time</legend>
+      <br>
+      <select name="" >
+        <option value="" selected="selected"> 0 min - 10 min </option>
+        <option value="">10 min - 30 min </option>
+        <option value=""> > 30 min</option>
+      </select>
+     </fieldset>
+</form>
+<br>
+<form action="" style="width:120%;">
+   <fieldset>
+      <legend>Quality</legend>
+      <br>
+      <select name="" >
+       <option value="" selected="selected">1</option>
+       <option value="">2</option>
+       <option value="">3</option>
+       <option value="">4</option>
+       <option value="">5</option>
+     </select>
+     </fieldset>
+</form>
+<br>
+<button style="margin-bottom:7%;" type="submit">Search</button>
+</div>
+</section>        
     </div>
-
     <footer class="box" style="text-align: center;">
         <p>
             Copyright &copy;

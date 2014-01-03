@@ -334,4 +334,22 @@ nav a:active {
     cursor: pointer;
 }
 
+#table1 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    width: 80%;
+}
+
+#form1{
+    margin-left:33%;
+    width:60%;
+    margin-right:;
+}
+
+div.allinea {
+    float:left;
+    margin-left:2px;
+    margin-right: 5px;
+}
+
 ---------------------------------

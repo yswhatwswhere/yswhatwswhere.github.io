@@ -4,16 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>You Say What We Say Where</title>
-    <link rel="stylesheet" href="stylesheet.css" type="text/css">
-    <script type="text/javascript">
-        var frags = ["pizza.webm#t=0,10", "pizza.webm#t=11,20", "pizza.webm#t=21,30"];
-        function chapter(num) {
-            var v = document.getElementById("vrec");
-            v.setAttribute("src", frags[num]);
-            v.setAttribute("autoplay", true);
-            return false;
-        }
-    </script>
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
 <body>
@@ -42,7 +33,7 @@
             <ul>
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
                 <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="#">Recently viewed</a></li>
+                <li><a href="recentlyviewed.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
@@ -57,20 +48,28 @@
                 <li><a href="#">Demo</a></li>
             </ul>
     </nav>
-
-    <section id="home_main">
-        <video id="vrec" src="pizza.webm" controls preload>
-        </video>
-        <a onclick="chapter(0)" href="#">Intro</a>
-        <a onclick="chapter(1)" href="#">Story</a>
-        <a onclick="chapter(2)" href="#">Ingredients</a>
-        0-10 Intro
-        11-29 Story
-        31-57 Ingredients
-        58-160 Preparation
-        161-174 Baking
-        175-204 Conclusion
-    </section>
+    <div style="width:80%">
+    <h1 align="center">Most Recently Viewed Recipes</h1>
+    <form id="form1" action="">
+      <fieldset>
+         <legend><h2>Last Months:<h2></h2></legend>
+         <select name="siti" >
+             <option value="one_month" selected="selected">Last One Month</option>
+             <option value="two_months">Last Two Months</option>
+             <option value="three_months">Last Three Months</option>
+         </select>
+      </fieldset><br>
+      <button type="submit">Update</button>
+	</form>
+    </div>
+    <style type="text/css">div.allinea { float:left; margin-left:80px; margin-top: 5%; }</style>
+    <div class="allinea" style="width:160px;height:160px;"><img  style="display:block; width: 160px; height: 160px; margin-left:auto; margin-right:auto;" src="./photo/food2.jpg"/></div>
+    <div class="allinea" style="width:160px;height:160px;"><img  style="display:block; width: 160px; height: 160px; margin-left:7px; margin-right:auto;" src="./photo/food3.jpg"/></div>
+    <div style="clear:both;" /></div>
+    <style type="text/css">div.allinea2 { float:left; margin-left:180px; margin-top: 2%; margin-bottom: 3%; }</style>
+    <div class="allinea2" style="width:160px;height:160px;"><img  style="display:block; width: 160px; height: 160px; margin-left:88px; margin-right:auto;" src="./photo/food1.png"/></div>
+    <div class="allinea2" style="width:150px;height:160px;"><img  style="display:block; width: 160px; height: 160px; margin-left:auto; margin-right:auto;" src="./photo/food4.jpg"/></div>
+    <div style="clear:both;" /></div>
     </div>
 
     <footer class="box" style="text-align: center;">
