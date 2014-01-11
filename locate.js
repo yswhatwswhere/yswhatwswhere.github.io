@@ -7,6 +7,10 @@ var myOptions = {
     zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
+var place;
+var price;
+var quality;
+var isin;
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -15,7 +19,7 @@ function initialize() {
       map.setCenter(sophia);
       var request = {
     location: sophia,
-    radius: 10000,
+    radius: 30000,
     keyword: 'supermarket'
   };
   infowindow = new google.maps.InfoWindow();
@@ -32,6 +36,17 @@ function callback(results, status) {
       createMarker(results[i]);
     }
   }
+    places = results;
+    price = Array(results.length);
+    for (var i = 0; i < price.length; i++)
+        price[i] = Math.floor((Math.random()*30)+1);
+    quality = Array(results.length);
+    for (var i = 0; i < quality.length; i++)
+        quality[i] = Math.floor((Math.random()*5)+1);
+    isin = Array(results.length);
+    for (var i = 0; i < price.length; i++)
+        price[i] = 1;
+    alert("Till now...");
 }
 
 function createMarker(place) {
