@@ -178,9 +178,9 @@ function createMarker(place) {
   });
 }
 
-function setAllMap() {
+function setAllMap(themap) {
      for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+    markers[i].setMap(themap);
   }
 }
 
