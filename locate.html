@@ -102,36 +102,34 @@ function Logout(){
             <fieldset>
               <ul>
                 <li>
-                  Time<input id="time" type="range" min="600" max="18000" value="18000">
+                  Time<input id="time" name="time" type="range" min="600" max="18000" value="18000">
                 </li>
                 <li>
-                  Distance<input id="distance" type="range" min="1000" max="50000" value="10000">
+                  Distance<input id="distance" name="distance" type="range" min="1000" max="30000" value="30000">
                 </li>
                 <li>
-                  Budget<input id="budget" type="range" min="1" max="100" value="100">
+                  Budget<input id="budget" name="budget" type="range" min="1" max="100" value="100">
                 </li>
                 <li>
-                  <input id="address" type="text" placeholder="Your address">
+                  <input style="text-align: center;" id="address" name="address" type="text" placeholder="Your address">
                 </li>
                 <br />
+                Quality:
                 <li id="quality">
-                     <input id="radio1" type="radio" name="rate" value="1">
+                     <input id="radio1" type="radio" name="quality" value="1">
                      <label for="radio1"></label>
-                     <input id="radio2" type="radio" name="rate" value="2">
+                     <input id="radio2" type="radio" name="quality" value="2">
                      <label for="radio2"></label>
-                     <input id="radio3" type="radio" name="rate" value="3">
+                     <input id="radio3" type="radio" name="quality" value="3">
                      <label for="radio3"></label>
-                     <input id="radio4" type="radio" name="rate" value="4">
+                     <input id="radio4" type="radio" name="quality" value="4">
                      <label for="radio4"></label>
-                     <input id="radio5" type="radio" name="rate" value="5">
+                     <input id="radio5" type="radio" name="quality" value="5">
                      <label for="radio5"></label>
                 </li>
+                <br />
+                <button style="margin-left: auto; margin-right: auto;" type="submit">Update</button>
               </ul>
-            </fieldset>
-            <fieldset>
-                <ul>
-                <button type="submit">Update</button>
-                </ul>
             </fieldset>
         </form>
         <div id="map-canvas" style="width: 500px; height: 300px; float: right; margin-left: 100px;"></div>
