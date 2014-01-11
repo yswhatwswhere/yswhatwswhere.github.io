@@ -15,7 +15,6 @@ var timeT;
 var price;
 var quality;
 var isin;
-var service = new google.maps.DistanceMatrixService();
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -61,24 +60,24 @@ function callback(results, status) {
         dest[i] = results[i].geometry.location;
         orig[i] = sophia;
     }
+    var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
         origins: [sophia],
         destinations: dest,
         travelMode: google.maps.TravelMode.DRIVING,
-        unitSystem: UnitSystem,
+        unitSystem: google.maps.UnitSystem.METRIC,
         avoidHighways: false,
         avoidTolls: false
       }, distInfo);
 }
 
 function distInfo(response, status) {
-    alert("Till now...");
-    for (var i = 0; i < response.rows.length; i++) {
-        dist[i] = response.rows[i].distance.value;
-        distT[i] = response.rows[i].distance.text;
-        time[i] = response.rows[i].distance.value;
-        timeT[i] = response.rows[i].distance.value;
+    for (var i = 0; i < response.rows[0].elements.length; i++) {
+        dist[i] = response.rows[0].elements[i].distance.value;
+        distT[i] = response.rows[0].elements[i].distance.text;
+        time[i] = response.rows[0].elements[i].distance.value;
+        timeT[i] = response.rows[0].elements[i].distance.value;
     }
 }
 
