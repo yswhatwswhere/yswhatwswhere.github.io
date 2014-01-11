@@ -7,14 +7,15 @@ var myOptions = {
     zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
+var market;
 var place;
-var dist;
+/*var dist;
 var distT;
 var time;
 var timeT;
 var price;
 var quality;
-var isin;
+var isin;*/
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -40,8 +41,9 @@ function callback(results, status) {
       createMarker(results[i]);
     }
   }
-    places = results;
-    price = Array(results.length);
+
+    place = results;
+/*    price = Array(results.length);
     for (var i = 0; i < price.length; i++)
         price[i] = Math.floor((Math.random()*30)+1);
     quality = Array(results.length);
@@ -53,12 +55,12 @@ function callback(results, status) {
     dist = Array(results.length);
     time = Array(results.length);
     distT = Array(results.length);
-    timeT = Array(results.length);
+    timeT = Array(results.length);*/
     var dest = Array(results.length);
-    var orig = Array(results.length);
+//    var orig = Array(results.length);
     for (var i = 0; i < results.length; i++) {
         dest[i] = results[i].geometry.location;
-        orig[i] = sophia;
+  //      orig[i] = sophia;
     }
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
@@ -73,12 +75,24 @@ function callback(results, status) {
 }
 
 function distInfo(response, status) {
-    for (var i = 0; i < response.rows[0].elements.length; i++) {
-        dist[i] = response.rows[0].elements[i].distance.value;
-        distT[i] = response.rows[0].elements[i].distance.text;
-        time[i] = response.rows[0].elements[i].distance.value;
-        timeT[i] = response.rows[0].elements[i].distance.value;
+    market = Array(place.length);
+    for (var i = 0; i < market.length; i++) {
+        market[i] = {
+                    name: place[i].name,
+                    dist: response.rows[0].elements[i].distance.value,
+                    distT: response.rows[0].elements[i].distance.text,
+                    time: response.rows[0].elements[i].distance.value,
+                    timeT: response.rows[0].elements[i].distance.text,
+                    price: Math.floor((Math.random()*30)+1),
+                    quality: Math.floor((Math.random()*5)+1),
+                    isin: 1
+                    }
     }
+    market.sort(compare);
+}
+
+function compare(a, b) {
+    return a.price - b.price;
 }
 
 function createMarker(place) {
