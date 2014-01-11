@@ -8,9 +8,14 @@ var myOptions = {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 var place;
+var dist;
+var distT;
+var time;
+var timeT;
 var price;
 var quality;
 var isin;
+var service = new google.maps.DistanceMatrixService();
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -46,7 +51,35 @@ function callback(results, status) {
     isin = Array(results.length);
     for (var i = 0; i < price.length; i++)
         price[i] = 1;
+    dist = Array(results.length);
+    time = Array(results.length);
+    distT = Array(results.length);
+    timeT = Array(results.length);
+    var dest = Array(results.length);
+    var orig = Array(results.length);
+    for (var i = 0; i < results.length; i++) {
+        dest[i] = results[i].geometry.location;
+        orig[i] = sophia;
+    }
+    service.getDistanceMatrix(
+      {
+        origins: [sophia],
+        destinations: dest,
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: UnitSystem,
+        avoidHighways: false,
+        avoidTolls: false
+      }, distInfo);
+}
+
+function distInfo(response, status) {
     alert("Till now...");
+    for (var i = 0; i < response.rows.length; i++) {
+        dist[i] = response.rows[i].distance.value;
+        distT[i] = response.rows[i].distance.text;
+        time[i] = response.rows[i].distance.value;
+        timeT[i] = response.rows[i].distance.value;
+    }
 }
 
 function createMarker(place) {
