@@ -1,3 +1,4 @@
+var geocoder;
 var map;
 var infowindow;
 var currLoc;
@@ -18,9 +19,11 @@ var quality;
 var isin;*/
 var markers = [];
 var currAddr = "";
+var service;
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+  geocoder = new google.maps.Geocoder();
   navigator.geolocation.getCurrentPosition(function(position) {
       currLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
       map.setCenter(currLoc);
@@ -30,7 +33,7 @@ function initialize() {
     keyword: 'supermarket'
   };
   infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
+  service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
     }, function() {
       handleNoGeolocation(browserSupportFlag);
@@ -96,10 +99,9 @@ function distInfo(response, status) {
 }
 
 function onUpdate() {
-    address = document.getElementById('address');
+    address = document.getElementById('address').value;
     if(address != currAddr) {
         currAddr = address;
-        alert(currAddr);
         geocoder.geocode( { 'address': address}, changeToThere); 
     }
     else
@@ -113,7 +115,6 @@ function changeToThere(results, status) {
            radius: 20000,
            keyword: 'supermarket'
            }, callback);
-    alert(currAddr);
 }
 
 function updateResults() {
