@@ -4,7 +4,7 @@ var sophia;
 var siberia = new google.maps.LatLng(60, 105);
 var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
 var myOptions = {
-    zoom: 12,
+    zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 var market;
@@ -16,6 +16,7 @@ var timeT;
 var price;
 var quality;
 var isin;*/
+var markers = [];
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -24,7 +25,7 @@ function initialize() {
       map.setCenter(sophia);
       var request = {
     location: sophia,
-    radius: 30000,
+    radius: 20000,
     keyword: 'supermarket'
   };
   infowindow = new google.maps.InfoWindow();
@@ -37,9 +38,9 @@ function initialize() {
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
+/*    for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
-    }
+    }*/
   }
 
     place = results;
@@ -78,17 +79,44 @@ function distInfo(response, status) {
     market = Array(place.length);
     for (var i = 0; i < market.length; i++) {
         market[i] = {
+                    info: place[i],
                     name: place[i].name,
                     dist: response.rows[0].elements[i].distance.value,
                     distT: response.rows[0].elements[i].distance.text,
-                    time: response.rows[0].elements[i].distance.value,
-                    timeT: response.rows[0].elements[i].distance.text,
-                    price: Math.floor((Math.random()*30)+1),
+                    time: response.rows[0].elements[i].duration.value,
+                    timeT: response.rows[0].elements[i].duration.text,
+                    price: Math.floor((Math.random()*35)+5),
                     quality: Math.floor((Math.random()*5)+1),
                     isin: 1
                     }
     }
     market.sort(compare);
+    updateResults();
+}
+
+function updateResults() {
+    list = document.getElementById('markets');
+    list.innerHTML = "";
+    setAllMap(null);
+    time = document.getElementById('time').value;
+    distance = document.getElementById('distance').value;
+    budget = document.getElementById('budget').value;
+    address = document.getElementById('address').value;
+    var n = 0;
+    for (var i = 0; i < market.length; i++) {
+        if ((market[i].dist <= distance) && (market[i].time <= time) && (market[i].price <= budget)) {
+            var newItem = document.createElement("li");
+            newItem.innerHTML = market[i].name+", "+market[i].distT+", "+market[i].timeT+", "+market[i].price+" &euro;";
+            list.appendChild(newItem);
+            createMarker(market[i].info);
+            n++;
+        }
+        if (n == 1)
+            map.setCenter(market[i].info.geometry.location);
+        if (n == 3)
+            break;
+    }
+    setAllMap(map);
 }
 
 function compare(a, b) {
@@ -101,11 +129,18 @@ function createMarker(place) {
     map: map,
     position: place.geometry.location
   });
+  markers.push(marker);
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
   });
+}
+
+function setAllMap() {
+     for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
 }
 
   function handleNoGeolocation(errorFlag) {

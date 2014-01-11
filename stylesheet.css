@@ -646,6 +646,11 @@ footer ul li:hover {
     background: url(star_sel.png) no-repeat;
 }
 
+#markets {
+    list-style: none;
+    text-align: left;
+}
+
 ---------------------------------
 .rating {
   unicode-bidi: bidi-override;

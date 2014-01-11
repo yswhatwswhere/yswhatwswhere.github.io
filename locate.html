@@ -98,6 +98,7 @@ function Logout(){
     </nav>
 
     <section id="home_main">
+        <ul id="markets"></ul>
         <form id="formMap" style="float: left; width: 10px;">
             <fieldset>
               <ul>
@@ -107,14 +108,14 @@ function Logout(){
                 </li>
                 <li>
                   <p style="margin: 0px;">Distance</p>
-                  <input id="distance" name="distance" type="range" min="1000" max="30000" value="30000">
+                  <input id="distance" name="distance" type="range" min="1000" max="20000" value="20000">
                 </li>
                 <li>
                   <p style="margin: 0px; padding: 0px;">Budget<p>
-                  <input style="margin-top: 0px; padding-top: 0px;" id="budget" name="budget" type="range" min="1" max="30" value="30">
+                  <input style="margin-top: 0px; padding-top: 0px;" id="budget" name="budget" type="range" min="5" max="30" value="30">
                 </li>
                 <li>
-                  <input style="text-align: center;" id="address" name="address" type="text" placeholder="Your address">
+                  <input style="text-align: center;" id="address" name="address" type="text" value="" placeholder="Your address">
                 </li>
                 <br />
                 Quality:
@@ -131,7 +132,7 @@ function Logout(){
                      <label for="radio5"></label>
                 </li>
                 <br />
-                <button style="margin-left: auto; margin-right: auto;" type="submit">Update</button>
+                <button style="margin-left: auto; margin-right: auto;" onclick="updateResults()" type="button">Update</button>
               </ul>
             </fieldset>
         </form>
