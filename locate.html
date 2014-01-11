@@ -6,74 +6,46 @@
     <title>You Say What We Say Where</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
-
+<script type="text/javascript" src="food_database.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+<script type="text/javascript" src="locate.js"></script>
 <script>
-var map;
-var infowindow;
-var sophia;
-var siberia = new google.maps.LatLng(60, 105);
-var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-var myOptions = {
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
 
-function initialize() {
-  map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-  navigator.geolocation.getCurrentPosition(function(position) {
-      sophia = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      map.setCenter(sophia);
-      var request = {
-    location: sophia,
-    radius: 10000,
-    keyword: 'supermarket'
-  };
-  infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, callback);
-    }, function() {
-      handleNoGeolocation(browserSupportFlag);
-    });
+function UpdateInfo(){
+	if(typeof(localStorage.first_time)==="undefined"){
+		LoadFood_database()
+		localStorage.first_time = 1;
+	}
+
+	if(typeof(Storage)!=="undefined"){
+		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
+			document.getElementsByName('account')[0].style.display = 'none';
+			document.getElementById('info').innerHTML = localStorage.name; 
+			document.getElementsByName('credentials')[0].style.display = 'block';
+			document.getElementsByName('only_login')[0].style.display = 'block';
+		}else{
+			document.getElementsByName('account')[0].style.display = 'block';
+			document.getElementsByName('credentials')[0].style.display = 'none';
+		}
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
 }
 
-function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
 }
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-
-  function handleNoGeolocation(errorFlag) {
-    if (errorFlag == true) {
-      alert("Geolocation service failed.");
-      initialLocation = newyork;
-    } else {
-      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-      initialLocation = siberia;
-    }
-    map.setCenter(initialLocation);
-  }
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
- 
-<body>
+
+<body onload="UpdateInfo()">
 
 <div id="main_container">
 
@@ -83,7 +55,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="account">
+	<nav id="account" name="credentials" style="display:none">
+        <ul>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
+            </ul>
+        </li>
+		</ul>
+    </nav>
+	
+    <nav id="account" name="account">
         <ul>
         <li>
         <a><strong>my Account</strong></a>
@@ -96,14 +78,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </nav>
     <div>
     <nav id="main_nav">
-            <ul>
+            <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
-                <li><a href="#">My favourites</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="#">New shopping list</a></li>
                 <li><a href="#">Nearest shop</a></li>
             </ul>
@@ -116,11 +98,56 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </nav>
 
     <section id="home_main">
+        <form id="formMap" style="float: left; width: 10px;">
+            <fieldset>
+              <ul>
+                <li>
+                  Time<input id="time" type="range" min="600" max="18000" value="18000">
+                </li>
+                <li>
+                  Distance<input id="distance" type="range" min="1000" max="50000" value="10000">
+                </li>
+                <li>
+                  Budget<input id="budget" type="range" min="1" max="100" value="100">
+                </li>
+                <li>
+                  <input id="address" type="text" placeholder="Your address">
+                </li>
+                <br />
+                <li id="quality">
+                     <input id="radio1" type="radio" name="rate" value="1">
+                     <label for="radio1"></label>
+                     <input id="radio2" type="radio" name="rate" value="2">
+                     <label for="radio2"></label>
+                     <input id="radio3" type="radio" name="rate" value="3">
+                     <label for="radio3"></label>
+                     <input id="radio4" type="radio" name="rate" value="4">
+                     <label for="radio4"></label>
+                     <input id="radio5" type="radio" name="rate" value="5">
+                     <label for="radio5"></label>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset>
+                <ul>
+                <button type="submit">Update</button>
+                </ul>
+            </fieldset>
+        </form>
+        <div id="map-canvas" style="width: 500px; height: 300px; float: right; margin-left: 100px;"></div>
     </section>
     </div>
 
-    <footer class="box" style="text-align: center;">
-        <p>
+     <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()
@@ -138,9 +165,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
         </p>
     </footer>
 
+
 </div>
 
-        <div id="map-canvas"></div>
 </body>
 
 </html>

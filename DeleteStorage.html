@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>You Say What We Say Where</title>
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
+</head>
+<script>
+
+function clearStorage(){
+	alert('ciao')
+	if(typeof(Storage)!=="undefined"){
+		localStorage.clear();
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+
+
+</script>
+
+<body>
+
+<div id="main_container">
+
+    <header id="title" class="box">
+        <a href="index.html">
+            <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
+        </a>
+        <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
+    </header>
+    
+    <section id="home_main">
+        <form id="form">
+            <span>
+        	    <button type="button" onclick="clearStorage()">Delete Storage</button>
+            </span>
+	    </form>
+    </section>
+ </div>
+
+    <footer class="box" style="text-align: center;">
+        <p>
+            Copyright &copy;
+            <script type="text/javascript">
+                var d = new Date()
+                document.write(d.getFullYear())
+            </script>
+            YouSayWhatWeSayWhere - Eurecom
+        </p>
+        <p>
+            <img style="width: 3%; height: 3%;"
+                src="./HTML5Logo.svg"
+                alt="This page is written in HTML5!" />
+            <img style="border:0;width:88px;height:31px"
+                src="http://jigsaw.w3.org/css-validator/images/vcss"
+                alt="Valid CSS!" />
+        </p>
+    </footer>
+
+</div>
+
+</body>
+
+</html>

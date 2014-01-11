@@ -7,35 +7,59 @@
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
-<script type="text/javascript" src="food_database.json"></script>
-<script>
+<script type="text/javascript">
 
 var name;
 var src_photo;
-var src_video;
-var frags;
 var ingredients;
 var description;
 var rating;
+var src_video;
+var frags;
+
 
 function getParameter() {
+	UpdateInfo();
 	var parameter = String(location.search.substring(1).split('?'));
 	res = parameter.split("=");
 	pname = res[0];
-	pvalue = res[1].replace("+"," ");
+	pvalue = res[1].replace(/\+/g, ' ');
 	
+	var data=localStorage.food_database;
 	var mydata = JSON.parse(data);
+	var ok = false;
 	for (i in mydata){
 		if(mydata[i].name.toLowerCase() == pvalue.toLowerCase()){
+			ok = true;
 			name=mydata[i].name;
 			src_photo=mydata[i].photo;
 			ingredients=mydata[i].ingredients;
 			rating=parseInt(mydata[i].rating,10); 
 			description=mydata[i].description;
-            src_video=mydata[i].video;
+			src_video=mydata[i].video;
             frags=mydata[i].videoFrags;
+
 									}
 		}
+		if(!ok){
+		document.getElementById('home_main').style.display = 'none';
+		document.getElementById('no_result').style.display = 'block';
+		return;
+		}
+		
+		
+		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
+		if(typeof(localStorage.view)==="undefined" || localStorage.view==""){
+			localStorage.view = src_photo;
+			localStorage.view_name = name;
+		}else{
+		    var str = new String(localStorage.view);
+			if(str.indexOf(src_photo) == -1){
+			localStorage.view = localStorage.view + "," + src_photo;
+			localStorage.view_name = localStorage.view_name + "," + name;
+			}
+		}
+ 		}
 		photo(src_photo);				
 		info();
 		}
@@ -68,11 +92,16 @@ function info(){
 	for (i in ingredients){
 		 var newItem = document.createElement("li");                
          var newItemValue = document.createTextNode(ingredients[i]); 
-         newItem.appendChild(newItemValue);
+         newItem.appendChild(newItemValue);              
          ingredients_list.appendChild(newItem);
 	}
-    video = document.getElementById("vrec");
-    video.src = src_video;
+	
+	video = document.getElementById("vrec");
+	if(src_video==""){
+	 video.style.display = 'none';
+	}else{
+	video.src = src_video;
+	}
     frag_list = document.getElementById("vfrags");
     for (i in frags){
         var newItem = document.createElement("li");
@@ -83,7 +112,7 @@ function info(){
         //newLink.innerHTML = frags[i][0];
         //newItem.appendChild(newLink);
   //      alert("Hi!");
-        newItem.innerHTML = "<a onclick=\"chapter(&quot;"+frags[i][1]+"&quot;)\">"+frags[i][0]+"</a>";
+		newItem.innerHTML = "<a onclick=\"chapter(&quot;"+frags[i][1]+"&quot;)\">"+frags[i][0]+"</a>";
         //newSpan.innerHTML = "<a href=\"#\" onclick=\"chapter("+frags[i][1]+")\">"+frags[i][0]+"</a>";
         //newItem.appendChild(newSpan);
     //    alert("Ha!");
@@ -98,6 +127,33 @@ function chapter(frag) {
     return false;
 }
 
+function UpdateInfo(){
+
+	if(typeof(Storage)!=="undefined"){
+		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
+			document.getElementsByName('account')[0].style.display = 'none';
+			document.getElementById('info').innerHTML = localStorage.name; 
+			document.getElementsByName('credentials')[0].style.display = 'block';
+			document.getElementsByName('only_login')[0].style.display = 'block';
+			document.getElementById('Favourite').style.display = 'inline';
+		}else{
+			document.getElementsByName('account')[0].style.display = 'block';
+			document.getElementsByName('credentials')[0].style.display = 'none';
+		}
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
 </script>
 
 <body onload="getParameter()">
@@ -110,7 +166,18 @@ function chapter(frag) {
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="account">
+    	
+	<nav id="account" name="credentials" style="display:none">
+        <ul>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
+            </ul>
+        </li>
+		</ul>
+    </nav>
+	
+    <nav id="account" name="account">
         <ul>
         <li>
         <a><strong>my Account</strong></a>
@@ -121,16 +188,16 @@ function chapter(frag) {
         </li>
         </ul>
     </nav>
-    
+    <div>
     <nav id="main_nav">
-            <ul>
+            <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
-                <li><a href="#">My favourites</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="#">New shopping list</a></li>
                 <li><a href="#">Nearest shop</a></li>
             </ul>
@@ -140,8 +207,8 @@ function chapter(frag) {
                 <li><a href="#">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
-    </nav>
-
+    </nav>	
+	
         <div id="home_main" style="float:left; dislpay:block; margin-left:100px;">
 		<div style="float:left;">
 		<figure style="float:left; border: 1px solid #cccccc;">
@@ -161,17 +228,31 @@ function chapter(frag) {
 		
 		<div id="form">
 		<span>
-		<button type="button" style="">Save in my favourite</button>
+		<button id="Favourite" type="button" style="display:none">Save in my favourite</button>
 		<button type="button">Search Shop</button>
 		</span>
 		</div>
-        <br />
-		<video id="vrec" controls autoload></video>
+		<video class="video-wrapper" id="vrec" controls autoload></video>
         <ul id="vfrags"></ul>
 		<textarea id="description_area"></textarea>
+		
 		</div>
+		
+		
+            <div id="no_result" style="display:none; width:200px; height:300px; margin:auto;">
+			<h1>No result!</h1>
+			</div>
+
     <footer class="box" style="text-align: center;">
-        <p>
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()

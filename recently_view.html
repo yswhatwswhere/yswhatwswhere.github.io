@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>You Say What We Say Where</title>
+        <link rel="stylesheet" href="stylesheet.css" type="text/css">
+</head>
+
+<script>
+
+var array;
+var array_name;
+var N;
+function getInfo() {
+	UpdateInfo()
+
+	if(typeof(localStorage.view)==="undefined" || localStorage.view==""){
+			document.getElementById('c1').style.display = 'none';
+			document.getElementById('c2').style.display = 'none';
+			document.getElementById('no_result').style.display = 'block';
+			return;
+			}
+	var view_name = new String(localStorage.view_name);		
+	var view = new String(localStorage.view);
+	array = view.split(',');
+	array_name = view_name.split(',');
+	
+	N = array.length;
+	for (i=0; i<N && i<6; i++)	photo(array[i],i);				
+		}
+
+
+function photo(src_photo,i){
+	var canvas = document.getElementsByTagName('canvas')[i];
+	  document.getElementsByTagName('figure')[i].style.display="block";
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+	  var x = 10;
+      var y = 10;
+      var width = 130;
+      var height = 130;
+	  imageObj.onload = function() {
+        context.drawImage(imageObj, x, y, width, height);
+      };
+      imageObj.src = src_photo;
+}
+
+
+
+
+
+function UpdateInfo(){
+
+	if(typeof(Storage)!=="undefined"){
+			document.getElementById('info').innerHTML = localStorage.name; 
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+index = parseInt(data);
+if(ev.target.id=='trash'){
+	document.getElementsByTagName('canvas')[index].style.display="none";
+	document.getElementsByTagName('figure')[index].style.display="none";
+	array.splice(index, 1);
+	array_name.splice(index, 1);
+	if(array.length==0){
+		localStorage.view =""
+		localStorage.view_name =""
+		document.getElementById('c1').style.display = 'none';
+		document.getElementById('c2').style.display = 'none';
+		document.getElementById('no_result').style.display = 'block';
+	}else{
+		localStorage.view = array.toString();
+		localStorage.view_name = array_name.toString();
+}
+}else{
+		var str = array_name[index]
+		window.location = './recipe.html?dish='+str.replace(/\ /g, '+');
+}
+}
+ 	
+</script>
+
+<body onload="getInfo()">
+<div id="main_container">
+
+    <header id="title" class="box">
+        <a href="index.html">
+            <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
+        </a>
+        <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
+    </header>
+    	
+   <nav id="account" name="credentials">
+        <ul>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
+            </ul>
+        </li>
+		</ul>
+    </nav>
+ 
+    <nav id="main_nav">
+            <ul>
+                <li><a href="createrecipe.html">Create my own recipe</a></li>
+                <li><a href="recommendation.html">Recommendation</a></li>
+            </ul>
+		
+            <ul>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="#">New shopping list</a></li>
+                <li><a href="#">Nearest shop</a></li>
+            </ul>
+        
+            <ul style="border: 0px; margin: 0px;">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Give your feedback</a></li>
+                <li><a href="#">Demo</a></li>
+            </ul>
+    </nav>
+	
+        <div id="home_main" style="float:left; dislpay:block; margin-left:10px;">
+		<div id="c1" style="float:left; width:750px;">
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="0" width="150" height="150"></canvas>
+		</figure>
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="1" width="150" height="150"></canvas>
+		</figure>
+
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="2" width="150" height="150"></canvas>
+		</figure>
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="3" width="150" height="150"></canvas>
+		</figure>
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="4" width="150" height="150"></canvas>
+		</figure>
+		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
+		<canvas draggable="true" ondragstart="drag(event)" id="5" width="150" height="150"></canvas>
+		</figure>
+		
+		</div>
+		
+		<div id="c2" style="clear:left; margin:auto; width:400px;">
+		<figure class="rotate" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="this.className = 'over';" ondragleave="this.className = 'rotate';" style="float:left;">
+		<img src="./go.jpeg" id="play" width="100" height="100"></img>
+		</figure>
+		
+		<figure class="rotate" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="this.className = 'over';" ondragleave="this.className = 'rotate';" style="float:left;">
+		<img src="./trash.jpeg" id="trash" width="100" height="100"></img>
+		</figure>
+		</div>
+		
+		
+		</div>
+		
+		
+            <div id="no_result" style="display:none; width:200px; height:300px; margin:auto;">
+			<h1>No result!</h1>
+			</div>
+
+    <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
+            Copyright &copy;
+            <script type="text/javascript">
+                var d = new Date()
+                document.write(d.getFullYear())
+            </script>
+            YouSayWhatWeSayWhere - Eurecom
+        </p>
+        <p>
+            <img style="width: 3%; height: 3%;"
+                src="./HTML5Logo.svg"
+                alt="This page is written in HTML5!" />
+            <img style="border:0;width:88px;height:31px"
+                src="http://jigsaw.w3.org/css-validator/images/vcss"
+                alt="Valid CSS!" />
+        </p>
+    </footer>
+
+
+</div>
+
+</body>
+
+</html>

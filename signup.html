@@ -7,6 +7,36 @@
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
+<script>
+function StoreUser(){
+    
+	var name=document.getElementsByName("name");
+	var surname=document.getElementsByName("surname");
+	var address=document.getElementsByName("address");
+	var mail=document.getElementsByName("mail");
+	var pass=document.getElementsByName("password");
+	if(typeof(Storage)!=="undefined"){
+		if(localStorage.getItem(mail[0].value) === null){
+			localStorage.setItem(mail[0].value, pass[0].value);
+			var key = mail[0].value + pass[0].value;
+			var data = name[0].value +' '+ surname[0].value;
+			localStorage.setItem(key,data);
+			document.getElementById('form').style.display = 'none';
+			document.getElementById('correct').style.display = 'block';
+		
+		}else{
+			document.getElementById('form').style.display = 'none';
+			document.getElementById('not_correct').style.display = 'block';
+			}
+	
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+</script>
+
+
 <body>
 
 <div id="main_container">
@@ -23,21 +53,15 @@
         <a><strong>my Account</strong></a>
             <ul>
                 <li><a href="login.html">Log in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
             </ul>
         </li>
         </ul>
     </nav>
     <div>
     <nav id="main_nav">
+          
             <ul>
-                <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
-            </ul>
-		
-            <ul>
-                <li><a href="#">My favourites</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="#">New shopping list</a></li>
                 <li><a href="#">Nearest shop</a></li>
             </ul>
@@ -50,21 +74,49 @@
     </nav>
 
     <section id="home_main">
-        <form id="form" action="#">
+        <form id="form" onsubmit="StoreUser(); return false;">
             <div>
-                First Name: <input id="in" name="name" type="text" placeholder="Paolo" required autofocus ><br /><br />
-                Family Name: <input id="in" name="surname" type="text" placeholder="Rossi" required autofocus ><br /><br />
-                Address: <input id="in" name="address" type="text" placeholder="10, Avenue Saint James" required autofocus ><br /><br />
-                Username: <input id="in" name="username" type="text" placeholder="Username" required autofocus ><br /><br />
-                Password: <input id="in" name="password" type="password" placeholder="Password" required autofocus ><br /><br />
-                <button id="loginB" type="submit">Sign Up</button>
+			<table align="center">
+                <tr><th>First Name:</th> 
+				<td><input  name="name" type="text" placeholder="Paolo" required autofocus ><td>
+                <tr><th>Family Name: </th>
+				<td><input  name="surname" type="text" placeholder="Rossi" required autofocus ><td>
+                <tr><th>Address:</th>
+				<td> <input name="address" type="text" placeholder="10, Avenue Saint James" required autofocus><td>
+                <tr><th>Mail:</th>  
+				<td><input  name="mail" type="mail" placeholder="example@gmail.com" required autofocus><td>
+				<tr><th>Password: </th> <td>
+				<input 	name="password" type="text" placeholder="Password" required autofocus><td>             </table>   
+				<button type="submit">Sign Up</button>
             </div>
 	    </form>
+		
+		<form id="correct" style="display:none">
+            <div>
+			<h1>You are signed in please now log you in!</h1>
+			</div>
+		</form>
+		
+		<form id="not_correct" style="display:none">
+            <div>
+			<h1>You are already signed in please go directly to login page!</h1>
+			</div>
+		</form>
+
+		
     </section>
     </div>
 
-    <footer class="box" style="text-align: center;">
-        <p>
+   <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()

@@ -1,5 +1,19 @@
 body {
     background-color: #ffa200;
+	animation:changeColor 15s infinite;
+	-webkit-animation:changeColor 15s infinite; /* Safari and Chrome */
+}
+
+@keyframes changeColor
+{
+from {background:blue;}
+to {background:orange;}
+}
+
+@-webkit-keyframes changeColor /* Safari and Chrome */
+{
+from {background:blue;}
+to {background:orange;}
 }
 
 #main_container{
@@ -33,13 +47,49 @@ body {
 #title{
     position: relative;
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 #title img {
     position: absolute;
     top: 10px;
     left: 10px;
+	animation:moveLogo 15s infinite;
+	-webkit-animation:moveLogo 15s infinite; /* Safari and Chrome */
+}
+
+@keyframes moveLogo
+{
+from {left:0%;
+  -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+to {left:100%;
+  -webkit-transform: rotate(720deg);
+     -moz-transform: rotate(720deg);
+       -o-transform: rotate(720deg);
+      -ms-transform: rotate(720deg);
+          transform: rotate(720deg);}
+}
+
+@-webkit-keyframes moveLogo /* Safari and Chrome */
+{
+from {left:0%;
+  -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+to {left:100%;
+-webkit-transform: rotate(720deg);
+     -moz-transform: rotate(720deg);
+       -o-transform: rotate(720deg);
+      -ms-transform: rotate(720deg);
+          transform: rotate(720deg);}
 }
 
 #title p {
@@ -100,6 +150,106 @@ body {
     padding: 0px;
     /* width: 410px; */
 }
+.f1 {
+	padding: 0px;
+    background: #f0f0f0;
+    /* Border style */
+    border: 1px solid #cccccc;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    /* Border Shadow */
+    -moz-box-shadow: 2px 2px 2px #cccccc;
+    -webkit-box-shadow: 2px 2px 2px #cccccc;
+    box-shadow: 2px 2px 2px #cccccc;
+    text-align: center;
+}
+
+.container {
+    background:#ddd;
+    margin:20px auto;
+    position:relative;
+    margin-left: 3%;
+    width:90%;
+    margin-top: 2px;
+
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+
+    box-shadow:1px 1px 5px #111;
+    -moz-box-shadow:1px 1px 5px #111;
+    -webkit-box-shadow:1px 1px 5px #111;
+}
+
+.gallery {
+    width: 100%;
+}
+
+.gallery a {
+    display: inline-block;
+    height: 150px;
+    position: relative;
+    width: 185px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.gallery a img {
+    border:5px solid #fff;
+    cursor:pointer;
+    display:block;
+    height:100%;
+    left:0px;
+    position:absolutew;
+    top:0px;
+    width:100%;
+    z-index:1;
+
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+
+    -webkit-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -webkit-transition-duration:2.5s;
+    -moz-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -moz-transition-duration:2.5s;
+    -o-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -o-transition-duration:2.5s;
+    transition-property:width, height, top, bottom, left, right, z-index, border;
+    transition-duration:2.5s;
+}
+
+.gallery a:hover img {
+    border:15px solid #fff;
+    cursor:default;
+    height:150%;
+    position:absolute;
+    width:150%;
+    z-index:25;
+
+    box-shadow:1px 1px 5px #888;
+    -moz-box-shadow:1px 1px 5px #888;
+    -webkit-box-shadow:1px 1px 5px #888;
+    -webkit-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -webkit-transition-duration:2.5s;
+    -moz-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -moz-transition-duration:2.5s;
+    -o-transition-property:width, height, top, bottom, left, right, z-index, border;
+    -o-transition-duration:2.5s;
+    transition-property:width, height, top, bottom, left, right, z-index, border;
+    transition-duration:2.5s;
+}
+
+div.allinea {
+    float:left;
+    margin-left:2px;
+    margin-right: 5px;
+}
     
 button {
     display: inline;
@@ -116,9 +266,12 @@ input {
     min-width: 300px;
     color: #797979;
     margin-right: 5px;
+	margin-bottom: 10px;
+	padding:5px;
 }
     
 #main_nav {
+    clear: right;
     float: left;
     margin: 0px;
     padding: 12px;
@@ -235,8 +388,8 @@ nav a:active {
 }
 
 #account {
-    position: absolute;
-    right: 20px;
+    float: right;
+    margin-bottom: 0px;
 }
 
 #account ul {
@@ -249,6 +402,8 @@ nav a:active {
 
 #account ul li:hover ul {
     display: block;
+    position: absolute;
+    z-index: 1;
 }
 
 
@@ -311,6 +466,186 @@ nav a:active {
     
 }
 
+.video-wrapper { 
+	width: 600px; 
+	height: 337px; 
+	padding: 15px; 
+	border: 2px solid black; 
+	background: #f0f0f0;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	display: block;
+}
+
+
+
+ul#vfrags {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+	margin-top: 20px;  
+	margin-right:auto; 
+	margin-left:auto;
+}
+  
+ul#vfrags li {
+    background-color: #FF831C;
+    border-bottom: 5px solid #54BAE2;
+    display: block;
+    margin: 2px;
+	margin-bottom: 20px;
+    float: left; /* elementi su singola riga */
+}
+  
+ul#vfrags li a {
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+}
+  
+ul#vfrags li:hover {
+    background-color: #54BAE2;
+    border-bottom: 5px solid #FF831C;
+}
+
+ul#vfrags li :active{
+    color:#000;
+}
+
+
+footer ul{
+    font-family: Verdana, sans-serif;
+	width: 800px;
+    margin: 20px auto 0px auto;
+    padding: 0;
+    list-style: none;
+}
+  
+footer ul li {
+    background-color: #FF831C;
+    border-bottom: 5px solid #C0C0C0;
+    display: block;
+    margin: 2px;
+	margin-bottom: 20px;
+    float: left;
+}
+  
+footer ul li a {
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+    text-decoration: none;
+    width: 150px;
+}
+  
+
+footer ul li:hover {
+	background-color: #C0C0C0;
+    border-bottom: 5px solid #000000;
+}
+
+.tilt {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+ 
+.tilt:hover {
+  -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+
+.rotate {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.rotate:hover {
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.over {
+  border-bottom: 15px solid red;
+}
+
+#formMap {
+    text-align: center;
+}
+
+#formMap fieldset {
+    text-align: center;
+    border: 0px;
+}
+
+#formMap input {
+    border: 0px;
+    min-width: 10px;
+}
+
+#formMap button {
+    display: block;
+}
+
+#formMap ul {
+    list-style: none;
+}
+
+#quality {
+    direction: rtl;
+}
+
+#quality input[type="radio"] {
+    display: none;
+}
+
+#quality input[type="radio"] + label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(star.png) no-repeat;
+    cursor: pointer;
+}
+
+#quality input[type="radio"]:checked + label {
+    background: url(star_sel.png) no-repeat;
+}
+
+#quality input[type="radio"]:checked + label ~ label {
+    background: url(star_sel.png) no-repeat;
+}
+
+#quality input[type="radio"]:hover + label {
+    background: url(star_sel.png) no-repeat;
+}
+
+#quality input[type="radio"]:hover + label ~ label {
+    background: url(star_sel.png) no-repeat;
+}
+
 ---------------------------------
 .rating {
   unicode-bidi: bidi-override;
@@ -329,27 +664,4 @@ nav a:active {
     content: "\2605";
 	color: gold;
 }
-
-#vfrags a {
-    cursor: pointer;
-}
-
-#table1 {
-    border-collapse: separate;
-    border-spacing: 1px;
-    width: 80%;
-}
-
-#form1{
-    margin-left:33%;
-    width:60%;
-    margin-right:;
-}
-
-div.allinea {
-    float:left;
-    margin-left:2px;
-    margin-right: 5px;
-}
-
 ---------------------------------

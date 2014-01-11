@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,8 +6,459 @@
     <title>You Say What We Say Where</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
+<script type="text/javascript">
 
-<body>
+function new_location(x){
+	var a = document.getElementById(x).src;
+	if(a.indexOf("food1.jpg")>-1){
+		window.location='./recipe.html?dish=Pizza+Margherita';
+	}
+	if(a.indexOf("food2.jpg")>-1){
+		window.location='./recipe.html?dish=mixed+fried+sea';
+	}
+	if(a.indexOf("food3.jpg")>-1){
+		window.location='./recipe.html?dish=pasta+carbonara';
+	}
+	if(a.indexOf("food4.jpg")>-1){
+		window.location='./recipe.html?dish=lasagne+amatriciana';
+	}
+	if(a.indexOf("food5.jpg")>-1){
+		window.location='./recipe.html?dish=roasted+meat';
+	}
+	if(a.indexOf("food6.jpg")>-1){
+		window.location='./recipe.html?dish=spaghetti+tomato';
+	}
+	if(a.indexOf("food7.jpg")>-1){
+		window.location='./recipe.html?dish=chowder';
+	}
+	if(a.indexOf("food8.JPG")>-1){
+		window.location='./recipe.html?dish=plumcake+chocolate';
+	}
+	if(a.indexOf("food9.jpg")>-1){
+		window.location='./recipe.html?dish=gnocchi+sorrentina';
+	}
+	if(a.indexOf("food10.jpg")>-1){
+		window.location='./recipe.html?dish=ravioli+plin';
+	}
+	if(a.indexOf("food11.jpg")>-1){
+		window.location='./recipe.html?dish=meatballs+in+tomato+sauce';
+	}
+	if(a.indexOf("food12.jpg")>-1){
+		window.location='./recipe.html?dish=swordfish';
+	}
+	if(a.indexOf("food13.jpg")>-1){
+		window.location='./recipe.html?dish=risotto+asparagus';
+	}
+}
+
+function load(){
+	UpdateInfo();
+	var a = document.getElementById('sel1');
+	var b = a.getElementsByTagName('option')[0].selected= 'selected';
+	var x = document.getElementById('sel2');
+	var y = x.getElementsByTagName('option')[0].selected= 'selected';
+	var k = document.getElementById('sel3');
+	var j = k.getElementsByTagName('option')[0].selected= 'selected';
+}
+
+function change(){
+	var a = document.getElementById('sel1');
+	var b = a.options[a.selectedIndex];
+	var x = document.getElementById('sel2');
+	var y = x.options[x.selectedIndex];
+	var k = document.getElementById('sel3');
+	var j = k.options[k.selectedIndex];
+	if(b.value=="1" && y.value=="1" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food9.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food4.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="1" && y.value=="1" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food7.jpg';
+		document.getElementById('img6').src = './photo/food8.JPG';
+	}
+	if(b.value=="1" && y.value=="1" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food13.jpg';
+		document.getElementById('img3').src = './photo/food11.jpg';
+		document.getElementById('img4').src = './photo/food2.jpg';
+		document.getElementById('img5').src = './photo/food3.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="1" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food5.jpg';
+		document.getElementById('img2').src = './photo/food6.jpg';
+		document.getElementById('img3').src = './photo/food12.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="1" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food7.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food10.jpg';
+		document.getElementById('img6').src = './photo/food8.JPG';
+	}
+	if(b.value=="1" && y.value=="2" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food5.jpg';
+		document.getElementById('img3').src = './photo/food7.jpg';
+		document.getElementById('img4').src = './photo/food6.jpg';
+		document.getElementById('img5').src = './photo/food3.jpg';
+		document.getElementById('img6').src = './photo/food8.JPG';
+	}
+	if(b.value=="1" && y.value=="2" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food3.jpg';
+		document.getElementById('img2').src = './photo/food12.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food9.jpg';
+		document.getElementById('img5').src = './photo/food1.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="2" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food10.jpg';
+		document.getElementById('img2').src = './photo/food7.jpg';
+		document.getElementById('img3').src = './photo/food3.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="2" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food12.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food2.jpg';
+		document.getElementById('img5').src = './photo/food8.JPG';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="2" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food6.jpg';
+		document.getElementById('img4').src = './photo/food9.jpg';
+		document.getElementById('img5').src = './photo/food11.jpg';
+		document.getElementById('img6').src = './photo/food10.jpg';
+	}
+	if(b.value=="1" && y.value=="3" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food2.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food3.jpg';
+		document.getElementById('img5').src = './photo/food13.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="1" && y.value=="3" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food5.jpg';
+		document.getElementById('img2').src = './photo/food11.jpg';
+		document.getElementById('img3').src = './photo/food8.JPG';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food3.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="1" && y.value=="3" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food9.jpg';
+		document.getElementById('img2').src = './photo/food10.jpg';
+		document.getElementById('img3').src = './photo/food1.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food13.jpg';
+	}
+	if(b.value=="1" && y.value=="3" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food5.jpg';
+		document.getElementById('img3').src = './photo/food9.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food8.JPG';
+		document.getElementById('img6').src = './photo/food1.jpg';
+	}
+	if(b.value=="1" && y.value=="3" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food5.jpg';
+		document.getElementById('img2').src = './photo/food2.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food1.jpg';
+		document.getElementById('img6').src = './photo/food13.jpg';
+	}
+	if(b.value=="2" && y.value=="1" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food4.jpg';
+		document.getElementById('img3').src = './photo/food8.JPG';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food3.jpg';
+		document.getElementById('img6').src = './photo/food11.jpg';
+	}
+	if(b.value=="2" && y.value=="1" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food6.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food13.jpg';
+	}
+	if(b.value=="2" && y.value=="1" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food2.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food3.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food10.jpg';
+	}
+	if(b.value=="2" && y.value=="1" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food12.jpg';
+		document.getElementById('img2').src = './photo/food13.jpg';
+		document.getElementById('img3').src = './photo/food11.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="2" && y.value=="1" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food3.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food13.jpg';
+	}
+	if(b.value=="2" && y.value=="2" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food13.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food10.jpg';
+	}
+	if(b.value=="2" && y.value=="2" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food8.JPG';
+		document.getElementById('img5').src = './photo/food11.jpg';
+		document.getElementById('img6').src = './photo/food7.jpg';
+	}
+	if(b.value=="2" && y.value=="2" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food4.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="2" && y.value=="2" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food13.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="2" && y.value=="2" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food4.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food2.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food7.jpg';
+		document.getElementById('img6').src = './photo/food9.jpg';
+	}
+	if(b.value=="2" && y.value=="3" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food10.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food13.jpg';
+		document.getElementById('img5').src = './photo/food11.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="2" && y.value=="3" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food12.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food6.jpg';
+		document.getElementById('img5').src = './photo/food8.JPG';
+		document.getElementById('img6').src = './photo/food9.jpg';
+	}
+	if(b.value=="2" && y.value=="3" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food11.jpg';
+		document.getElementById('img2').src = './photo/food5.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food3.jpg';
+		document.getElementById('img5').src = './photo/food7.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="2" && y.value=="3" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food11.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food10.jpg';
+		document.getElementById('img6').src = './photo/food9.jpg';
+	}
+	if(b.value=="2" && y.value=="3" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food12.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food13.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="3" && y.value=="1" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food6.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food8.JPG';
+		document.getElementById('img6').src = './photo/food7.jpg';
+	}
+	if(b.value=="3" && y.value=="1" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food1.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food13.jpg';
+		document.getElementById('img6').src = './photo/food9.jpg';
+	}
+	if(b.value=="3" && y.value=="1" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food7.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food1.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food6.jpg';
+	}
+	if(b.value=="3" && y.value=="1" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food12.jpg';
+		document.getElementById('img2').src = './photo/food13.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food5.jpg';
+		document.getElementById('img6').src = './photo/food2.jpg';
+	}
+	if(b.value=="3" && y.value=="1" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food8.JPG';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food2.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="3" && y.value=="2" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food3.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food7.jpg';
+	}
+	if(b.value=="3" && y.value=="2" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food1.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food13.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="3" && y.value=="2" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food7.jpg';
+		document.getElementById('img2').src = './photo/food8.JPG';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food6.jpg';
+		document.getElementById('img6').src = './photo/food5.jpg';
+	}
+	if(b.value=="3" && y.value=="2" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="3" && y.value=="2" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food6.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food11.jpg';
+	}
+	if(b.value=="3" && y.value=="3" && j.value=="1"){
+		document.getElementById('img1').src = './photo/food1.jpg';
+		document.getElementById('img2').src = './photo/food8.JPG';
+		document.getElementById('img3').src = './photo/food7.jpg';
+		document.getElementById('img4').src = './photo/food12.jpg';
+		document.getElementById('img5').src = './photo/food13.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="3" && y.value=="3" && j.value=="2"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food13.jpg';
+	}
+	if(b.value=="3" && y.value=="3" && j.value=="3"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food1.jpg';
+		document.getElementById('img3').src = './photo/food9.jpg';
+		document.getElementById('img4').src = './photo/food8.JPG';
+		document.getElementById('img5').src = './photo/food1.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+	if(b.value=="3" && y.value=="3" && j.value=="4"){
+		document.getElementById('img1').src = './photo/food2.jpg';
+		document.getElementById('img2').src = './photo/food3.jpg';
+		document.getElementById('img3').src = './photo/food4.jpg';
+		document.getElementById('img4').src = './photo/food11.jpg';
+		document.getElementById('img5').src = './photo/food12.jpg';
+		document.getElementById('img6').src = './photo/food5.jpg';
+	}
+	if(b.value=="3" && y.value=="3" && j.value=="5"){
+		document.getElementById('img1').src = './photo/food10.jpg';
+		document.getElementById('img2').src = './photo/food13.jpg';
+		document.getElementById('img3').src = './photo/food5.jpg';
+		document.getElementById('img4').src = './photo/food1.jpg';
+		document.getElementById('img5').src = './photo/food3.jpg';
+		document.getElementById('img6').src = './photo/food4.jpg';
+	}
+}
+function UpdateInfo(){
+
+	if(typeof(Storage)!=="undefined"){
+		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
+			document.getElementsByName('account')[0].style.display = 'none';
+			document.getElementById('info').innerHTML = localStorage.name; 
+			document.getElementsByName('credentials')[0].style.display = 'block';
+			document.getElementsByName('only_login')[0].style.display = 'block';
+			document.getElementById('Favourite').style.display = 'inline';
+		}else{
+			document.getElementsByName('account')[0].style.display = 'block';
+			document.getElementsByName('credentials')[0].style.display = 'none';
+		}
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+</script>
+
+<body onload="load()">
 
 <div id="main_container">
 
@@ -17,7 +468,17 @@
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="account">
+  <nav id="account" name="credentials" style="display:none">
+        <ul>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
+            </ul>
+        </li>
+		</ul>
+    </nav>
+	
+    <nav id="account" name="account">
         <ul>
         <li>
         <a><strong>my Account</strong></a>
@@ -30,14 +491,14 @@
     </nav>
     <div>
     <nav id="main_nav">
-            <ul>
+            <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
-                <li><a href="#">My favourites</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="#">New shopping list</a></li>
                 <li><a href="#">Nearest shop</a></li>
             </ul>
@@ -47,76 +508,76 @@
                 <li><a href="#">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
-    </nav>
-
+    </nav>	
     <section id="home_main">
-        <div>
-            <h1 id="titolo">List of Recommended Recipes</h1>
+    	<div style="float:left; width:60%;margin-bottom:5%; margin:0 auto;">
+        <div class="container" id="container">
+            <div class="gallery">
+                <a tabindex="1"><img onClick="new_location('img1');" id="img1" src="./photo/food1.jpg"></a>
+                <a tabindex="1"><img onClick="new_location('img2');" id="img2" src="./photo/food3.jpg"></a>
+                <a tabindex="1"><img onClick="new_location('img3');" id="img3" src="./photo/food4.jpg"></a>
+                <a tabindex="1"><img onClick="new_location('img4');" id="img4" src="./photo/food5.jpg"></a>
+                <a tabindex="1"><img onClick="new_location('img5');" id="img5" src="./photo/food8.JPG"></a>
+                <a tabindex="1"><img onClick="new_location('img6');" id="img6" src="./photo/food6.jpg"></a>
+                <span class="close"></span>
+            </div>
+        </div>
+    	</div>
+    	<div id="forms" style="float:left; width:30%;margin-bottom:5%;height: 75px;" >
+    		<h2>Filter</h2>
+    		<form class="f1" id="f1" style="width:120%; height:100%;">
+  				
+     				<label>Price</label>
+     			<br><br>
+     					<select id="sel1" name="sel1">
+      						<option value="1" selected="selected">0€ - 10€</option>
+      						<option value="2">10€ - 30€</option>
+      						<option value="3"> > 30€</option>
+    					</select>
+    			
+			</form>
+			<br>
+			<form class="f1" style="width:120%; height:100%;">
+   				
+      				<label>Required Time</label>
+      			        <br>
+      			        <br>
+      					<select id="sel2" name="sel2">
+        					<option value="1" selected="selected"> 0 min - 10 min </option>
+        					<option value="2">10 min - 30 min </option>
+        					<option value="3"> > 30 min</option>
+      					</select>
+     			
+			</form>
+			<br>
+			<form class="f1" style="width:120%; height:100%;">
+   				
+      				  <label>Quality</label>
+      			 <br><br>
+				      <select id="sel3" name="sel3">
+				       <option value="1" selected="selected">&#9734</option>
+				       <option value="2">&#9734 &#9734</option>
+				       <option value="3">&#9734 &#9734 &#9734</option>
+				       <option value="4">&#9734 &#9734 &#9734 &#9734</option>
+				       <option value="5">&#9734 &#9734 &#9734 &#9734 &#9734</option>
+				     </select>
+				
+			</form>
             <br>
-         </div>
-<article id="article4">
-<div class="allinea" style="width:60%;">
-<table id="table1">
-  <tr>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/food2.jpg"/></td>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/food1.png"/></td>
-  </tr> 
-  <tr>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe2.jpeg"/></td>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe3.jpeg"/></td>
-  </tr>
-  <tr>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe5.jpeg"/></td>
-   <td style="width: 60%;"><img  style="display:block; width: 70%; height: 70%; margin-left:auto; margin-right:auto;" src="./photo/recipe1.jpeg"/></td>
-  </tr>             
-</table>
-</div>
-<div class="allinea" style="width:30%;">
-<h2>Filter</h2>
-<form action="" style="width:120%;">
-   <fieldset>
-      <legend>Price</legend>
-      <br>
-      <select name="" >
-       <option value="" selected="selected"> 0€ - 10€ </option>
-       <option value="">10€ - 30€ </option>
-       <option value=""> > 30€</option>
-     </select>
-     </fieldset>
-</form>
-<br>
-<form action="" style="width:120%;">
-   <fieldset>
-      <legend>Required Time</legend>
-      <br>
-      <select name="" >
-        <option value="" selected="selected"> 0 min - 10 min </option>
-        <option value="">10 min - 30 min </option>
-        <option value=""> > 30 min</option>
-      </select>
-     </fieldset>
-</form>
-<br>
-<form action="" style="width:120%;">
-   <fieldset>
-      <legend>Quality</legend>
-      <br>
-      <select name="" >
-       <option value="" selected="selected">1</option>
-       <option value="">2</option>
-       <option value="">3</option>
-       <option value="">4</option>
-       <option value="">5</option>
-     </select>
-     </fieldset>
-</form>
-<br>
-<button style="margin-bottom:7%;" type="submit">Search</button>
-</div>
-</section>        
-    </div>
-    <footer class="box" style="text-align: center;">
-        <p>
+            <button style="margin-bottom:7%; margin-left:20%;" type="button" onClick="change()">Search</button>
+    	</div>    
+    </section>
+
+   <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()
@@ -133,9 +594,6 @@
                 alt="Valid CSS!" />
         </p>
     </footer>
-
 </div>
-
 </body>
-
 </html>

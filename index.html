@@ -6,8 +6,44 @@
     <title>You Say What We Say Where</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
+<script type="text/javascript" src="food_database.js"></script> 
+<script>
 
-<body>
+function UpdateInfo(){
+	if(typeof(localStorage.first_time)==="undefined"){
+		LoadFood_database()
+		localStorage.first_time = 1;
+	}
+
+	if(typeof(Storage)!=="undefined"){
+		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
+			document.getElementsByName('account')[0].style.display = 'none';
+			document.getElementById('info').innerHTML = localStorage.name; 
+			document.getElementsByName('credentials')[0].style.display = 'block';
+			document.getElementsByName('only_login')[0].style.display = 'block';
+		}else{
+			document.getElementsByName('account')[0].style.display = 'block';
+			document.getElementsByName('credentials')[0].style.display = 'none';
+		}
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+
+
+</script>
+
+<body onload="UpdateInfo()">
 
 <div id="main_container">
 
@@ -17,7 +53,17 @@
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="account">
+	<nav id="account" name="credentials" style="display:none">
+        <ul>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
+            </ul>
+        </li>
+		</ul>
+    </nav>
+	
+    <nav id="account" name="account">
         <ul>
         <li>
         <a><strong>my Account</strong></a>
@@ -30,14 +76,14 @@
     </nav>
     <div>
     <nav id="main_nav">
-            <ul>
+            <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
-                <li><a href="#">My favourites</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="#">New shopping list</a></li>
                 <li><a href="#">Nearest shop</a></li>
             </ul>
@@ -58,19 +104,27 @@
 	    </form>
         <img src="cooker.png" alt="Cooker" />
         <article class="slide">
-            <a href="#"><img src="./photo/recipe1.jpeg" alt="image"></a>
-            <a href="#"><img src="./photo/recipe2.jpeg" alt="image"></a>
-            <a href="#"><img src="./photo/recipe3.jpeg" alt="image"></a>
-            <a href="#"><img src="./photo/recipe4.jpeg" alt="image"></a>
-            <a href="#"><img src="./photo/recipe5.jpeg" alt="image"></a>
-            <a href="./recipe.html?dish=roasted+meat"><img src="./photo/food3.jpg" alt="image"></a>
-            <a href="./recipe.html?dish=Pizza+Margherita"><img src="./photo/food2.jpg" alt="image"></a>
-        </article>
+           <a href="./recipe.html?dish=mixed+fried+sea"><img src="./photo/food2.jpg" alt="image"></a>
+            <a href="./recipe.html?dish=pasta+carbonara"><img src="./photo/food3.jpg" alt="image"></a>
+            <a href="./recipe.html?dish=plumcake+chocolate"><img src="./photo/food8.JPG" alt="image"></a>
+            <a href="./recipe.html?dish=lasagne+amatriciana"><img src="./photo/food4.jpg" alt="image"></a>
+            <a href="./recipe.html?dish=gnocchi+sorrentina"><img src="./photo/food9.jpg" alt="image"></a>
+            <a href="./recipe.html?dish=roasted+meat"><img src="./photo/food5.jpg" alt="image"></a>
+            <a href="./recipe.html?dish=Pizza+Margherita"><img src="./photo/food1.jpg" alt="image"></a>
+		</article>
     </section>
     </div>
 
-    <footer class="box" style="text-align: center;">
-        <p>
+     <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()
@@ -87,6 +141,7 @@
                 alt="Valid CSS!" />
         </p>
     </footer>
+
 
 </div>
 

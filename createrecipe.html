@@ -7,7 +7,142 @@
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
 
-<body>
+<script language="javascript">
+
+var i = 1;
+var ingredients = new Array();
+function addInput() {
+	var input = document.getElementById('ingr_1')
+	if(input.value!=""){
+	input.required = false;
+	i=i+1;
+	ingredients[i]=input.value;
+	document.getElementById('ingr').innerHTML += "<input id='ingr_"+i+"' type='text' value='"+input.value+"' disabled />";
+	}
+}
+	
+function delInput() {
+	if(i>1){
+	var input = document.getElementById('ingr_'+i);
+	document.getElementById('ingr').removeChild(input);
+	i=i-1;
+	}
+	
+	if(i==1) document.getElementById('ingr_1').required=true
+	
+}
+	
+function finish(){
+	if(i==1){
+	var input = document.getElementById('ingr_1');
+	input.value="";
+	return;
+	}
+	document.getElementById('form').style.display = 'none';
+	
+	var name = document.getElementById('title_new');
+	var new_name = document.getElementById('title_result');
+	new_name.innerHTML = name.value;
+	
+    description_area = document.getElementsByTagName("textarea");
+	description_area[1].value = description_area[0].value;
+	
+	ingredients_list = document.getElementById("ingredients_list");
+	var k=0;
+	var ingredient = new Array();
+	for (j=2; j<=i; j++){
+		   var newItem = document.createElement("li");                
+		   var newItemValue = document.createTextNode(ingredients[j]); 
+		   ingredient[k++]=ingredients[j];
+		   newItem.appendChild(newItemValue);              
+		   ingredients_list.appendChild(newItem);
+	}
+	
+	var file = document.getElementById('file');
+	photo('./newPhotos/'+file.value);
+	document.getElementById('result').style.display = 'block';
+	
+	update_food_database(name.value,'./newPhotos/'+file.value,ingredient,"0",description_area[1].value)
+}
+
+function photo(src_photo){
+	var canvas = document.getElementById('canvas_img');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+	  var x = 50;
+      var y = 30;
+      var width = 200;
+      var height = 137;
+	  imageObj.onload = function() {
+        context.drawImage(imageObj, x, y, width, height);
+      };
+      imageObj.src = src_photo;
+	  
+}
+
+function update_food_database(name,photo,ingredients,rating,description){
+	var data=localStorage.food_database;
+	var mydata = JSON.parse(data);
+	var foods = new Array();
+	
+	index=0
+	for(j in mydata){
+		var food = new Object();
+			food.name = mydata[j].name;
+			food.photo = mydata[j].photo;
+			food.video = mydata[j].video
+			food.videoFrags = mydata[j].videoFrags
+			food.ingredients = mydata[j].ingredients;
+			food.rating = mydata[j].rating;
+			food.description = mydata[j].description;
+			foods[index]=food;
+			index+=1;
+	}
+	
+		var food = new Object();
+			food.name = name;
+			food.photo = photo;
+			food.video = ""
+			food.videoFrags = ""
+			food.ingredients = ingredients;
+			food.rating = rating;
+			food.description = description;
+			foods[index]=food;
+	
+	var filter = new Array();
+	filter[0] = "name";
+	filter[1] = "photo";
+	filter[2] = "video";
+	filter[3] = "videoFrags";
+	filter[4] = "ingredients";
+	filter[5] = "rating";
+	filter[6] = "description";
+	
+	var jsonText = JSON.stringify(foods, filter, "\t");
+			localStorage.food_database=jsonText;
+}
+
+function UpdateInfo(){
+
+	if(typeof(Storage)!=="undefined"){
+			document.getElementById('info').innerHTML = localStorage.name; 
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+
+function Logout(){
+	if(typeof(Storage)!=="undefined"){
+		localStorage.login = 'false';
+		window.location = './index.html';
+	}else{
+		alert(' Sorry! No web storage support.. ')
+		}
+}
+ 	
+</script>
+
+<body onload="UpdateInfo()">
 
 <div id="main_container">
 
@@ -17,23 +152,21 @@
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-    <nav id="account">
+
+	<nav id="account" name="credentials">
         <ul>
-        <li>
-        <a><strong>my Account</strong></a>
-            <ul>
-                <li><a href="login.html">Log in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
+        <li><a><strong id="info"></strong></a> 
+			<ul>
+                <li><a onclick="Logout()">Log out</a></li>
             </ul>
         </li>
-        </ul>
+		</ul>
     </nav>
-    <div>
+ 
     <nav id="main_nav">
             <ul>
-                <li><a href="createrecipe.html">Create my own recipe</a></li>
                 <li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="recentlyviewed.html">Recently viewed</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
 		
             <ul>
@@ -49,19 +182,56 @@
             </ul>
     </nav>
 
-    <section id="home_main">
-        <form id="form" action="#">
-            <h1 id="titolo">Insert your recipe</h1>
+    <div id="home_main">
+        <form id="form" onsubmit="finish();return false;">
             <div>
-                <input name="recipe" type="text" placeholder="eg. Pizza Margherita" required autofocus>
-                <button id="loginB" type="submit">Create</button>
-            </div>
-	    </form>
-    </section>
-    </div>
+			<h1>Insert your recipe</h1>
+				<div style="margin-left:auto; margin-rigt:auto; margin-bottom:10px; width:400px;">
+					<label>Name</label>
+					<input id="title_new" type="text" placeholder="Name" required autofocus>
+                </div>
+				<div style="margin-left:auto; margin-rigt:auto; margin-bottom:10px; width:400px;">
+					<label>Photo</label>
+					<input id="file" type="file"required autofocus />
+				</div>
+				<div id="ingr" style="margin-left:auto; margin-rigt:auto; margin-bottom:10px; width:400px;">
+					<label>Ingredients</label> 
+					<input id="ingr_1" type="text" placeholder="Ingredients" required autofocus style="min-width: 100px">
+					<img  src="plus.jpeg" alt="Plus" height="30" width="30" onclick="addInput()">
+					<img  src="minus.jpeg" alt="Plus" height="30" width="30" onclick="delInput()">
+				</div>
+				<div style="margin-left:auto; margin-rigt:auto; margin-bottom:10px; width:400px;">
+					<label>Description</label>
+					<textarea  id="description_area" style=" background: white; margin-left:auto; margin-rigt:auto; width:300px;"></textarea>
+					<button type="submit">Create</button>
+				</div>
+			</div>
+		</form>
+		
+		<form id="result" style="display:none">
+            <div>
+			<h1>Your recipe has been correctly inserted!</h1>
+			<h2 id="title_result"></h2>
+				<canvas id="canvas_img" width="300" height="200"></canvas>
+				<ol id="ingredients_list"></ol>
+				<textarea id="description_area" style=" background: white; margin-left:auto; margin-rigt:auto; width:300px;"></textarea>
+			</div>
+		</form>		
+	</div>
+		
+   
+   
 
-    <footer class="box" style="text-align: center;">
-        <p>
+     <footer class="box" style="text-align: center;">
+        <ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		
+		<p style="clear:left">
             Copyright &copy;
             <script type="text/javascript">
                 var d = new Date()
@@ -78,6 +248,7 @@
                 alt="Valid CSS!" />
         </p>
     </footer>
+
 
 </div>
 
