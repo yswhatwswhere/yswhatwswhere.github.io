@@ -98,25 +98,45 @@ function updateResults() {
     list = document.getElementById('markets');
     list.innerHTML = "";
     setAllMap(null);
+    markers = [];
     time = document.getElementById('time').value;
     distance = document.getElementById('distance').value;
     budget = document.getElementById('budget').value;
     address = document.getElementById('address').value;
+    quality = getQuality();
     var n = 0;
     for (var i = 0; i < market.length; i++) {
-        if ((market[i].dist <= distance) && (market[i].time <= time) && (market[i].price <= budget)) {
+        if ((market[i].dist <= distance) && (market[i].time <= time) && (market[i].price <= budget) && (market[i].quality >= quality)) {
             var newItem = document.createElement("li");
             newItem.innerHTML = market[i].name+", "+market[i].distT+", "+market[i].timeT+", "+market[i].price+" &euro;";
             list.appendChild(newItem);
             createMarker(market[i].info);
             n++;
+            if (n == 1)
+                map.setCenter(market[i].info.geometry.location);
         }
-        if (n == 1)
-            map.setCenter(market[i].info.geometry.location);
         if (n == 3)
             break;
     }
     setAllMap(map);
+}
+
+function getQuality() {
+    var checked = false;
+    var q = 0;
+
+    if(document.getElementById('radio1').checked)
+        q = 5;
+    if(document.getElementById('radio2').checked)
+        q = 4;
+    if(document.getElementById('radio3').checked)
+        q = 3;
+    if(document.getElementById('radio4').checked)
+        q = 2;
+    if(document.getElementById('radio5').checked)
+        q = 1;
+    
+    return q;
 }
 
 function compare(a, b) {
@@ -130,7 +150,6 @@ function createMarker(place) {
     position: place.geometry.location
   });
   markers.push(marker);
-
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
