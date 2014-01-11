@@ -592,13 +592,26 @@ footer ul li:hover {
   border-bottom: 15px solid red;
 }
 
+#locateCont {
+    margin-top: 30px;
+    display: block;
+}
+
 #formMap {
     text-align: center;
 }
 
 #formMap fieldset {
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding-right: 35px;
+    border: solid 2px #C0C0C0;
+    background: #f3d268;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
     text-align: center;
-    border: 0px;
 }
 
 #formMap input {
@@ -647,8 +660,40 @@ footer ul li:hover {
 }
 
 #markets {
+    height: 90px;
+    counter-reset: li;
     list-style: none;
     text-align: left;
+}
+
+#markets li:before {
+    content: counter(li); /* Use the counter as content */
+    counter-increment: li; /* Increment the counter by 1 */
+    padding: 4px;
+    color: #fff;
+    background: #666;
+    border-radius: 50%;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    width: 15px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
+
+#map-canvas {
+    border: 2px solid black;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
+#formMap #address {
+    border: 2px solid #b9bdc1;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 ---------------------------------
