@@ -1,6 +1,6 @@
 var map;
 var infowindow;
-var sophia;
+var currLoc;
 var siberia = new google.maps.LatLng(60, 105);
 var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
 var myOptions = {
@@ -17,14 +17,15 @@ var price;
 var quality;
 var isin;*/
 var markers = [];
+var currAddr = "";
 
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
   navigator.geolocation.getCurrentPosition(function(position) {
-      sophia = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      map.setCenter(sophia);
+      currLoc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(currLoc);
       var request = {
-    location: sophia,
+    location: currLoc,
     radius: 20000,
     keyword: 'supermarket'
   };
@@ -66,7 +67,7 @@ function callback(results, status) {
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
-        origins: [sophia],
+        origins: [currLoc],
         destinations: dest,
         travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.METRIC,
@@ -94,6 +95,27 @@ function distInfo(response, status) {
     updateResults();
 }
 
+function onUpdate() {
+    address = document.getElementById('address');
+    if(address != currAddr) {
+        currAddr = address;
+        alert(currAddr);
+        geocoder.geocode( { 'address': address}, changeToThere); 
+    }
+    else
+        updateResults();
+}
+
+function changeToThere(results, status) {
+    currLoc = results[0].geometry.location;
+    service.nearbySearch({
+           location: currLoc,
+           radius: 20000,
+           keyword: 'supermarket'
+           }, callback);
+    alert(currAddr);
+}
+
 function updateResults() {
     list = document.getElementById('markets');
     list.innerHTML = "";
@@ -102,7 +124,6 @@ function updateResults() {
     time = document.getElementById('time').value;
     distance = document.getElementById('distance').value;
     budget = document.getElementById('budget').value;
-    address = document.getElementById('address').value;
     quality = getQuality();
     var n = 0;
     for (var i = 0; i < market.length; i++) {
