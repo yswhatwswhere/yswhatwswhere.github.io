@@ -90,7 +90,8 @@ function info(){
 	ingredients_list = document.getElementById("ingredients_list");
 	for (i in ingredients){
 		 var newItem = document.createElement("li");                
-         var newItemValue = document.createTextNode(ingredients[i]); 
+         var newItemValue = document.createTextNode(ingredients[i]);
+         newItem.itemprop = "ingredients";
          newItem.appendChild(newItemValue);              
          ingredients_list.appendChild(newItem);
 	}
@@ -209,11 +210,11 @@ function Logout(){
             </ul>
     </nav>	
 	
-        <div id="home_main" style="float:left; dislpay:block; margin-left:100px;">
+        <div itemscope itemtype="http://schema.org/Recipe" id="home_main" style="float:left; dislpay:block; margin-left:100px;">
 		<div style="float:left;">
 		<figure style="float:left; border: 1px solid #cccccc;">
-		<canvas id="canvas_img" width="300" height="200"></canvas>
-		<figcaption id="figcaption"></figcaption>
+		<canvas itemprop="image" id="canvas_img" width="300" height="200"></canvas>
+		<figcaption itemprop="name" id="figcaption"></figcaption>
 			
 			<span id="star1"> &#9734 </span>
 			<span id="star2"> &#9734 </span>
@@ -234,9 +235,9 @@ function Logout(){
         </form>
 		</span>
 		</div>
-		<video class="video-wrapper" id="vrec" controls autoload></video>
+		<video itemprop="video" class="video-wrapper" id="vrec" controls autoload></video>
         <ul id="vfrags"></ul>
-		<textarea id="description_area"></textarea>
+		<textarea itemprop="recipeInstructions" id="description_area"></textarea>
 		
 		</div>
 		
