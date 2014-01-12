@@ -695,6 +695,38 @@ footer ul li:hover {
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
+---------------------------------
+.grow {
+ margin: 20px 20px 20px 20px;
+  -webkit-transition: all 1.5s ease;
+     -moz-transition: all 1.5s ease;
+       -o-transition: all 1.5s ease;
+      -ms-transition: all 1.5s ease;
+          transition: all 1.5s ease;
+}
+.grow img {
+  border: 2px solid black;
+  background: white;
+  padding: 10px;
+ }
+.grow img:hover {
+  width: 150px;
+  height: 150px;
+}
+
+#contact{
+  width: 250px;
+  margin: auto;
+}
+
+#contact img {
+   width:50px;
+   height:50px;
+}
+
+#contact img:hover {
+    border-bottom: 5px solid #FF831C;
+}
 
 ---------------------------------
 .rating {

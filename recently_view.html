@@ -126,25 +126,25 @@ if(ev.target.id=='trash'){
         </li>
 		</ul>
     </nav>
- 
     <nav id="main_nav">
-            <ul>
+            <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
-                <li><a href="recommendation.html">Recommendation</a></li>
-            </ul>
-		
-            <ul>
                 <li><a href="#">My favourites</a></li>
-                <li><a href="#">New shopping list</a></li>
-                <li><a href="#">Nearest shop</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
-        
+
+            <ul>
+                <li><a href="recommendation.html">Recommendation</a></li>
+                <li><a href="shoplist.html">New shopping list</a></li>
+                <li><a href="nearshop.html">Nearest shop</a></li>
+            </ul>
+
             <ul style="border: 0px; margin: 0px;">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Give your feedback</a></li>
+                <li><a href="./About_us.html">About us</a></li>
+                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
-    </nav>
+    </nav> 
 	
         <div id="home_main" style="float:left; dislpay:block; margin-left:10px;">
 		<div id="c1" style="float:left; width:750px;">
@@ -180,14 +180,13 @@ if(ev.target.id=='trash'){
 		</figure>
 		</div>
 		
+			<form id="no_result" style="display:none;">
+            <div style="margin:auto; width:400px;">
+			<h1> No result!</h1>
+			</div>
+			</form>
 		
 		</div>
-		
-		
-            <div id="no_result" style="display:none; width:200px; height:300px; margin:auto;">
-			<h1>No result!</h1>
-			</div>
-
     <footer class="box" style="text-align: center;">
         <ul>
 			<li><a href="#">Home</a></li>

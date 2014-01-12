@@ -58,17 +58,22 @@ function LogUser(){
         </ul>
     </nav>
     <div>
-    <nav id="main_nav">
-         
-            <ul>
-				<li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="#">New shopping list</a></li>
-                <li><a href="#">Nearest shop</a></li>
+        <nav id="main_nav">
+            <ul name="only_login" style="display:none">
+                <li><a href="createrecipe.html">Create my own recipe</a></li>
+                <li><a href="#">My favourites</a></li>
+                <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
-        
+
+            <ul>
+                <li><a href="recommendation.html">Recommendation</a></li>
+                <li><a href="shoplist.html">New shopping list</a></li>
+                <li><a href="nearshop.html">Nearest shop</a></li>
+            </ul>
+
             <ul style="border: 0px; margin: 0px;">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Give your feedback</a></li>
+                <li><a href="./About_us.html">About us</a></li>
+                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
     </nav>
@@ -93,6 +98,7 @@ function LogUser(){
 		<form id="invalid_pass" style="display:none">
             <div>
 			<h1> Incorrect password!</h1>
+			<a href="./login.html">Login</a>
 			</div>
 		</form>
 		

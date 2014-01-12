@@ -135,7 +135,7 @@ function UpdateInfo(){
 			document.getElementById('info').innerHTML = localStorage.name; 
 			document.getElementsByName('credentials')[0].style.display = 'block';
 			document.getElementsByName('only_login')[0].style.display = 'block';
-			document.getElementById('Favourite').style.display = 'inline';
+//			document.getElementById('Favourite').style.display = 'inline';
 		}else{
 			document.getElementsByName('account')[0].style.display = 'block';
 			document.getElementsByName('credentials')[0].style.display = 'none';
@@ -198,13 +198,13 @@ function Logout(){
 		
             <ul>
 				<li><a href="recommendation.html">Recommendation</a></li>
-                <li><a href="#">New shopping list</a></li>
-                <li><a href="#">Nearest shop</a></li>
+                <li><a href="shoplist.html">New shopping list</a></li>
+                <li><a href="nearshop.html">Nearest shop</a></li>
             </ul>
         
             <ul style="border: 0px; margin: 0px;">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Give your feedback</a></li>
+                <li><a href="./About_us.html">About us</a></li>
+                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
     </nav>	
@@ -228,7 +228,7 @@ function Logout(){
 		
 		<div id="form">
 		<span>
-		<button id="Favourite" type="button" style="display:none">Save in my favourite</button>
+		<button id="Favourite" type="button" style="display: none;">Save in my favourite</button>
         <form action="locate.html">
 		<button type="submit">Search Shop</button>
         </form>

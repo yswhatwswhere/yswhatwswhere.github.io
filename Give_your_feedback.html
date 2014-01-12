@@ -6,16 +6,16 @@
     <title>You Say What We Say Where</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
-<script type="text/javascript" src="food_database.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-<script type="text/javascript" src="locateShop.js"></script>
-<script>
+
+<script language="javascript">
+
+function finish(){
+	document.getElementById('form').style.display = 'none';
+	document.getElementById('result').style.display = 'block';	
+}
+
 
 function UpdateInfo(){
-	if(typeof(localStorage.first_time)==="undefined"){
-		LoadFood_database()
-		localStorage.first_time = 1;
-	}
 
 	if(typeof(Storage)!=="undefined"){
 		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
@@ -41,11 +41,10 @@ function Logout(){
 		}
 }
 
-
-
 </script>
 
 <body onload="UpdateInfo()">
+
 
 <div id="main_container">
 
@@ -55,7 +54,8 @@ function Logout(){
         </a>
         <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
     </header>
-	<nav id="account" name="credentials" style="display:none">
+
+    	<nav id="account" name="credentials" style="display:none">
         <ul>
         <li><a><strong id="info"></strong></a> 
 			<ul>
@@ -77,33 +77,85 @@ function Logout(){
         </ul>
     </nav>
     <div>
-    <nav id="main_nav">
+     <nav id="main_nav">
             <ul name="only_login" style="display:none">
                 <li><a href="createrecipe.html">Create my own recipe</a></li>
                 <li><a href="#">My favourites</a></li>
                 <li><a href="./recently_view.html">Recently viewed</a></li>
             </ul>
-
+		
             <ul>
-                <li><a href="recommendation.html">Recommendation</a></li>
+				<li><a href="recommendation.html">Recommendation</a></li>
                 <li><a href="shoplist.html">New shopping list</a></li>
                 <li><a href="nearshop.html">Nearest shop</a></li>
             </ul>
-
+        
             <ul style="border: 0px; margin: 0px;">
                 <li><a href="./About_us.html">About us</a></li>
                 <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
                 <li><a href="#">Demo</a></li>
             </ul>
-    </nav>
+    </nav>	
 
-    <section id="home_main">
-        <div style="margin-left: 150px;">
-        <div id="map-canvas" style="width: 500px; height: 300px;"></div>
-        <ul id="markets"></ul>
-        </div>
-    </section>
-    </div>
+    <div id="home_main">
+        <form id="form" onsubmit="finish();return false;">
+            <div>
+			<h1>Give Us Your Feedback</h1>
+			<p style="text-align: justify;">
+			Tell us what you think about our website. We welcome your comments and suggestions. 
+			Please note that you will not receive a response by submitting this form. If you would like to send a message
+			that will receive a response please email yswsy@mail.com. For your security, 
+			do not provide any personal information (e.g., social security number, account numbers, etc.) when completing this form. 
+			Thank you for your feedback!
+			</p>
+				<ol style="text-align:left;">
+					<li><label>Did you visit the site looking for specific information?</label><br>
+					<input style="min-width:0%;" type="radio" name="q1" value="yes" checked>Yes<br>
+					<input style="min-width:0%;" type="radio" name="q1" value="no">No<br>
+					
+					<li><label>What part of the site did you visit?</label><br>
+					<input style="min-width:0%;" type="text" name="q2" required autofocus><br>
+					
+					<li><label>Did you find the information you wanted?</label><br>
+					<input style="min-width:0%;" type="radio" name="q3" value="yes" checked>Yes<br>
+					<input style="min-width:0%;" type="radio" name="q3" value="no">No<br>
+
+					<li><label>Does this site contain timely information?</label><br>
+					<input style="min-width:0%;" type="radio" name="q4" value="yes" checked>Yes<br>
+					<input style="min-width:0%;" type="radio" name="q4" value="no">No<br>
+
+					<li><label>Do you find it easy to navigate the site?</label><br>
+					<input style="min-width:0%;" type="radio" name="q5" value="yes" checked>Yes<br>
+					<input style="min-width:0%;" type="radio" name="q5" value="no">No<br>
+
+					<li><label>How often do you visit the site?</label><br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="1" checked>This is my first visit<br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="2">Daily<br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="3">Weekly<br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="4">Monthly<br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="5">Once every few months<br>
+					<input style="min-width:0%;" type="checkbox" name="q6" value="6">	Less than every few months<br>
+					
+					<li><label>Please give us any additional comments below:</label><br>
+					<textarea  id="description_area" style=" background: white; margin-left:auto; margin-rigt:auto; width:300px;"></textarea>
+					
+					<div style="text-align:left; width: 150px; margin: 20px auto 20px auto;">
+					<button type="submit">Done</button>
+					<button type="reset">Cancel</button>
+					</div>
+				</div>
+		</form>
+		
+		<form id="result" style="display:none">
+            <div>
+			<h1>Your form has been correctly submitted! Thank you!</h1>
+			</div>
+		</form>
+</div>		
+	</div>
+		
+   
+   
 
      <footer class="box" style="text-align: center;">
         <ul>

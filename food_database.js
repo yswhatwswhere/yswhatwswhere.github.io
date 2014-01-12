@@ -52,7 +52,7 @@ function LoadFood_database(){
 	food.videoFrags = ""
 	food.ingredients = ["lasagne : 300 grams in total", "250 grams of bacon", "1 red pepper", "olive oil : 6 tablespoons ", "1 golden onion thinly sliced", "butter : 30g"];
 	food.rating = "4";
-	food.description = "Place in a large skillet thinly sliced onion , chili chopped (no seeds) and the oil and wither all at low fire. Then add the diced bacon and sauté until golden brown : remove it from the pan and set it aside. Finally , pour the tomatoes in the pan or if you prefer, fresh ones peeled and seeds . Season with salt and cook over high heat for 8-10 minutes , then add the bacon and let it warm. For the white sauce , melt in a saucepan over low heat the butter, add the flour and stir with a wooden spoon until a thick roux and add a little milk , stirring constantly with wire , so creamy and without lumps."
+	food.description = "Place in a large skillet thinly sliced onion , chili chopped (no seeds) and the oil and wither all at low fire. Then add the diced bacon and saute until golden brown : remove it from the pan and set it aside. Finally , pour the tomatoes in the pan or if you prefer, fresh ones peeled and seeds . Season with salt and cook over high heat for 8-10 minutes , then add the bacon and let it warm. For the white sauce , melt in a saucepan over low heat the butter, add the flour and stir with a wooden spoon until a thick roux and add a little milk , stirring constantly with wire , so creamy and without lumps."
 	
 	foods[4]=food
 	
@@ -116,7 +116,7 @@ function LoadFood_database(){
 	food.photo = "./photo/food11.jpg";
 	food.video = ""
 	food.videoFrags = ""
-	food.ingredients = ["beef (or pork)", "chopped : 50g", "loaf of bread crumb (type Puglia) 100g", "ground pepper", "salt", "chopped parsley : 2 tablespoons", "garlic : 3 cloves"];
+	food.ingredients = ["beef (or pork)", "chopped : 50g", "loaf of bread crumb 100g", "ground pepper", "salt", "chopped parsley : 2 tablespoons", "garlic : 3 cloves"];
 	food.rating = "3";
 	food.description = "First, to prepare the meatballs to the sauce, remove the crust to a piece of loaf and cut into 100 grams of bread into squares, which will place in a blender and reduce to crumbs. Put in a bowl the minced meat (beef or pork, if you prefer), you can add the sausage deprived of the outer skin and add the finely chopped bread, add the parmesan, pecorino, parsley, eggs, salt, pepper and nutmeg."
 	

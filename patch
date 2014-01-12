@@ -1,0 +1,757 @@
+diff --git a/../MattiaAlessio/About_us/AR.jpg b/../MattiaAlessio/About_us/AR.jpg
+new file mode 100644
+index 0000000..d8b92b3
+Binary files /dev/null and b/../MattiaAlessio/About_us/AR.jpg differ
+diff --git a/../MattiaAlessio/About_us/LB.JPG b/../MattiaAlessio/About_us/LB.JPG
+new file mode 100644
+index 0000000..615a02d
+Binary files /dev/null and b/../MattiaAlessio/About_us/LB.JPG differ
+diff --git a/../MattiaAlessio/About_us/MM.jpg b/../MattiaAlessio/About_us/MM.jpg
+new file mode 100644
+index 0000000..785c0d6
+Binary files /dev/null and b/../MattiaAlessio/About_us/MM.jpg differ
+diff --git a/../MattiaAlessio/About_us/NT.jpg b/../MattiaAlessio/About_us/NT.jpg
+new file mode 100644
+index 0000000..f813032
+Binary files /dev/null and b/../MattiaAlessio/About_us/NT.jpg differ
+diff --git a/../MattiaAlessio/About_us/face.jpeg b/../MattiaAlessio/About_us/face.jpeg
+new file mode 100644
+index 0000000..2d493d4
+Binary files /dev/null and b/../MattiaAlessio/About_us/face.jpeg differ
+diff --git a/../MattiaAlessio/About_us/linkedin.jpeg b/../MattiaAlessio/About_us/linkedin.jpeg
+new file mode 100644
+index 0000000..a09d2bb
+Binary files /dev/null and b/../MattiaAlessio/About_us/linkedin.jpeg differ
+diff --git a/../MattiaAlessio/About_us/mail.jpeg b/../MattiaAlessio/About_us/mail.jpeg
+new file mode 100644
+index 0000000..02c9f70
+Binary files /dev/null and b/../MattiaAlessio/About_us/mail.jpeg differ
+diff --git a/../MattiaAlessio/About_us/twitter.jpeg b/../MattiaAlessio/About_us/twitter.jpeg
+new file mode 100644
+index 0000000..14ce4f4
+Binary files /dev/null and b/../MattiaAlessio/About_us/twitter.jpeg differ
+diff --git a/../MattiaAlessio/About_us.html b/../MattiaAlessio/About_us.html
+new file mode 100644
+index 0000000..c59cbb3
+--- /dev/null
++++ b/../MattiaAlessio/About_us.html
+@@ -0,0 +1,190 @@
++<!DOCTYPE html>
++<html lang="en">
++
++<head>
++    <meta charset="utf-8">
++    <title>You Say What We Say Where</title>
++        <link rel="stylesheet" href="stylesheet.css" type="text/css">
++</head>
++
++<script>
++
++function UpdateInfo(){
++
++	if(typeof(Storage)!=="undefined"){
++		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
++			document.getElementsByName('account')[0].style.display = 'none';
++			document.getElementById('info').innerHTML = localStorage.name; 
++			document.getElementsByName('credentials')[0].style.display = 'block';
++			document.getElementsByName('only_login')[0].style.display = 'block';
++			document.getElementById('Favourite').style.display = 'inline';
++		}else{
++			document.getElementsByName('account')[0].style.display = 'block';
++			document.getElementsByName('credentials')[0].style.display = 'none';
++		}
++	}else{
++		alert(' Sorry! No web storage support.. ')
++		}
++}
++
++function Logout(){
++	if(typeof(Storage)!=="undefined"){
++		localStorage.login = 'false';
++		window.location = './index.html';
++	}else{
++		alert(' Sorry! No web storage support.. ')
++		}
++}
++
++</script>
++
++<body onload="UpdateInfo()">
++
++<div id="main_container">
++
++    <header id="title" class="box">
++        <a href="index.html">
++            <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
++        </a>
++        <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
++    </header>
++    	<nav id="account" name="credentials" style="display:none">
++        <ul>
++        <li><a><strong id="info"></strong></a> 
++			<ul>
++                <li><a onclick="Logout()">Log out</a></li>
++            </ul>
++        </li>
++		</ul>
++    </nav>
++	
++    <nav id="account" name="account">
++        <ul>
++        <li>
++        <a><strong>my Account</strong></a>
++            <ul>
++                <li><a href="login.html">Log in</a></li>
++                <li><a href="signup.html">Sign up</a></li>
++            </ul>
++        </li>
++        </ul>
++    </nav>
++    <div>
++    <nav id="main_nav">
++            <ul name="only_login" style="display:none">
++                <li><a href="createrecipe.html">Create my own recipe</a></li>
++                <li><a href="#">My favourites</a></li>
++                <li><a href="./recently_view.html">Recently viewed</a></li>
++            </ul>
++		
++            <ul>
++				<li><a href="recommendation.html">Recommendation</a></li>
++                <li><a href="#">New shopping list</a></li>
++                <li><a href="#">Nearest shop</a></li>
++            </ul>
++        
++            <ul style="border: 0px; margin: 0px;">
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
++                <li><a href="#">Demo</a></li>
++            </ul>
++    </nav>	
++
++	
++        <div id="home_main" style="float:left;background: #444; 
++		margin-bottom: 30px;
++		margin-left: 30px;
++		-moz-border-radius: 7px;
++		-webkit-border-radius: 7px;
++		border-radius: 7px;    
++		-moz-box-shadow: 0 1px 0 rgba(255,255,255,.2), 0 2px 1px rgba(0,0,0,.8);
++		-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.2), 0 2px 1px rgba(0,0,0,.8);
++		box-shadow: 0 1px 0 rgba(255,255,255,.2), 0 2px 1px rgba(0,0,0,.8); 
++		background: rgba(0,0,0,.2); dislpay:block; margin-left:10px; border: 1px solid #cccccc;">
++		<div id="c1" style="float:left; width:300px; border-right: 1px solid;">
++		<figure class="grow">
++		<img class="tilt" src="./About_us/AR.jpg" width="120" height="120"></img>
++		</figure>
++		<figure class="grow">
++		<img class="tilt" src="./About_us/MM.jpg" width="120" height="120" ></img>
++		</figure>
++		<figure class="grow">
++		<img class="tilt" src="./About_us/LB.JPG"  width="120" height="120" ></img>
++		</figure>
++		<figure class="grow">
++		<img class="tilt" src="./About_us/NT.jpg" width="120" height="120" ></img>
++		</figure>
++		</div>
++		
++		<div class="c2" style="float:left; margin:auto; width:400px; border: 1px solid #cccccc;">
++		
++		<h2>Hi, This is our group</h2>
++		<hr style="background-color: black; width:80%; height: 5px;">
++		<p style="text-align:left; margin-left:10px;">
++		According to the order of images, from the top to the bottom, the members of the group are: 
++		</p>
++		<ul style="text-align:left">
++			<li>Alessio Roselli</li>
++			<li>Mattia Mantello</li>
++			<li>Lorenzo Bracco</li>
++			<li>Natasha Toussa</li>
++		</ul>
++		<h2>Facts about us</h2>
++		<hr style="background-color: black; width:80%; height: 5px;">
++		<ul style="text-align:left">
++			<p>Alessio Roselli was born in Turin(TO), Italy, on the 5 January 1990, he is a computer engineer 
++			and comes from the Polythecnic University of Turin, Italy.</p> 
++			<p>Mattia Mantello was born in Andora(SV), Italy, on the 5 April 1990, he is a computer engineer 
++			and comes from the Polythecnic University of Turin, Italy.</p>
++			<p>Lorenzo Bracco was born in Chivasso(TO), Italy, on the 29 November 1990, he is a computer engineer 
++			and comes from the Polythecnic University of Turin, Italy.</p>
++			<p>Natasha Toussa was born in Paris (France) on the 7 July 1990, she is a telecommunications engineer and 
++                          she comes from the Telecom ParisTech University of Paris,
++			 France.</p>
++		</ul>
++		
++		<div id="contact">
++		<h2>Become our BBF</h2>
++		<hr style="background-color: black; width:80%; height: 5px;">
++			<a href="mailto:name@email.com"> <img src="./About_us/mail.jpeg"  ></img></a>
++			<a href="#"><img src="./About_us/twitter.jpeg"  ></img></a>
++			<a href="#"><img src="./About_us/face.jpeg"  ></img></a>
++			<a href="#"><img src="./About_us/linkedin.jpeg"  ></img></a>
++		</div>
++		
++		</div>
++		
++		
++		</div>
++    <footer class="box" style="text-align: center;">
++        <ul>
++			<li><a href="#">Home</a></li>
++			<li><a href="#">About Us</a></li>
++			<li><a href="#">Services</a></li>
++			<li><a href="#">Portfolio</a></li>
++			<li><a href="#">Contact</a></li>
++		</ul>
++		
++		<p style="clear:left">
++            Copyright &copy;
++            <script type="text/javascript">
++                var d = new Date()
++                document.write(d.getFullYear())
++            </script>
++            YouSayWhatWeSayWhere - Eurecom
++        </p>
++        <p>
++            <img style="width: 3%; height: 3%;"
++                src="./HTML5Logo.svg"
++                alt="This page is written in HTML5!" />
++            <img style="border:0;width:88px;height:31px"
++                src="http://jigsaw.w3.org/css-validator/images/vcss"
++                alt="Valid CSS!" />
++        </p>
++    </footer>
++
++
++</div>
++
++</body>
++
++</html>
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/DeleteStorage.html b/../MattiaAlessio/DeleteStorage.html
+old mode 100755
+new mode 100644
+diff --git a/../MattiaAlessio/Give_your_feedback.html b/../MattiaAlessio/Give_your_feedback.html
+new file mode 100644
+index 0000000..32a944f
+--- /dev/null
++++ b/../MattiaAlessio/Give_your_feedback.html
+@@ -0,0 +1,191 @@
++<!DOCTYPE html>
++<html lang="en">
++
++<head>
++    <meta charset="utf-8">
++    <title>You Say What We Say Where</title>
++        <link rel="stylesheet" href="stylesheet.css" type="text/css">
++</head>
++
++<script language="javascript">
++
++function finish(){
++	document.getElementById('form').style.display = 'none';
++	document.getElementById('result').style.display = 'block';	
++}
++
++
++function UpdateInfo(){
++
++	if(typeof(Storage)!=="undefined"){
++		if( localStorage.login !== 'false' && typeof(localStorage.login)!=="undefined"){
++			document.getElementsByName('account')[0].style.display = 'none';
++			document.getElementById('info').innerHTML = localStorage.name; 
++			document.getElementsByName('credentials')[0].style.display = 'block';
++			document.getElementsByName('only_login')[0].style.display = 'block';
++		}else{
++			document.getElementsByName('account')[0].style.display = 'block';
++			document.getElementsByName('credentials')[0].style.display = 'none';
++		}
++	}else{
++		alert(' Sorry! No web storage support.. ')
++		}
++}
++
++function Logout(){
++	if(typeof(Storage)!=="undefined"){
++		localStorage.login = 'false';
++		window.location = './index.html';
++	}else{
++		alert(' Sorry! No web storage support.. ')
++		}
++}
++
++</script>
++
++<body onload="UpdateInfo()">
++
++
++<div id="main_container">
++
++    <header id="title" class="box">
++        <a href="index.html">
++            <img src="main_image.jpeg" alt="My Daily recipe" style="border-radius: 7px; width: 100px; height: 63px" />
++        </a>
++        <a href="index.html"><p>YOU SAY WHAT WE SAY WHERE</p></a>
++    </header>
++
++    	<nav id="account" name="credentials" style="display:none">
++        <ul>
++        <li><a><strong id="info"></strong></a> 
++			<ul>
++                <li><a onclick="Logout()">Log out</a></li>
++            </ul>
++        </li>
++		</ul>
++    </nav>
++	
++    <nav id="account" name="account">
++        <ul>
++        <li>
++        <a><strong>my Account</strong></a>
++            <ul>
++                <li><a href="login.html">Log in</a></li>
++                <li><a href="signup.html">Sign up</a></li>
++            </ul>
++        </li>
++        </ul>
++    </nav>
++    <div>
++    <nav id="main_nav">
++            <ul name="only_login" style="display:none">
++                <li><a href="createrecipe.html">Create my own recipe</a></li>
++                <li><a href="#">My favourites</a></li>
++                <li><a href="./recently_view.html">Recently viewed</a></li>
++            </ul>
++		
++            <ul>
++				<li><a href="recommendation.html">Recommendation</a></li>
++                <li><a href="#">New shopping list</a></li>
++                <li><a href="#">Nearest shop</a></li>
++            </ul>
++        
++            <ul style="border: 0px; margin: 0px;">
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="#">Demo</a></li>
++            </ul>
++    </nav>	
++
++    <div id="home_main">
++        <form id="form" onsubmit="finish();return false;">
++            <div>
++			<h1>Give Us Your Feedback</h1>
++			<p style="text-align: justify;">
++			Tell us what you think about our website. We welcome your comments and suggestions. 
++			Please note that you will not receive a response by submitting this form. If you would like to send a message
++			that will receive a response please email yswsy@mail.com. For your security, 
++			do not provide any personal information (e.g., social security number, account numbers, etc.) when completing this form. 
++			Thank you for your feedback!
++			</p>
++				<ol style="text-align:left;">
++					<li><label>Did you visit the site looking for specific information?</label><br>
++					<input style="min-width:0%;" type="radio" name="q1" value="yes" checked>Yes<br>
++					<input style="min-width:0%;" type="radio" name="q1" value="no">No<br>
++					
++					<li><label>What part of the site did you visit?</label><br>
++					<input style="min-width:0%;" type="text" name="q2" required autofocus><br>
++					
++					<li><label>Did you find the information you wanted?</label><br>
++					<input style="min-width:0%;" type="radio" name="q3" value="yes" checked>Yes<br>
++					<input style="min-width:0%;" type="radio" name="q3" value="no">No<br>
++
++					<li><label>Does this site contain timely information?</label><br>
++					<input style="min-width:0%;" type="radio" name="q4" value="yes" checked>Yes<br>
++					<input style="min-width:0%;" type="radio" name="q4" value="no">No<br>
++
++					<li><label>Do you find it easy to navigate the site?</label><br>
++					<input style="min-width:0%;" type="radio" name="q5" value="yes" checked>Yes<br>
++					<input style="min-width:0%;" type="radio" name="q5" value="no">No<br>
++
++					<li><label>How often do you visit the site?</label><br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="1" checked>This is my first visit<br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="2">Daily<br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="3">Weekly<br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="4">Monthly<br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="5">Once every few months<br>
++					<input style="min-width:0%;" type="checkbox" name="q6" value="6">	Less than every few months<br>
++					
++					<li><label>Please give us any additional comments below:</label><br>
++					<textarea  id="description_area" style=" background: white; margin-left:auto; margin-rigt:auto; width:300px;"></textarea>
++					
++					<div style="text-align:left; width: 150px; margin: 20px auto 20px auto;">
++					<button type="submit">Done</button>
++					<button type="reset">Cancel</button>
++					</div>
++				</div>
++		</form>
++		
++		<form id="result" style="display:none">
++            <div>
++			<h1>Your form has been correctly submitted! Thank you!</h1>
++			</div>
++		</form>
++</div>		
++	</div>
++		
++   
++   
++
++     <footer class="box" style="text-align: center;">
++        <ul>
++			<li><a href="#">Home</a></li>
++			<li><a href="#">About Us</a></li>
++			<li><a href="#">Services</a></li>
++			<li><a href="#">Portfolio</a></li>
++			<li><a href="#">Contact</a></li>
++		</ul>
++		
++		<p style="clear:left">
++            Copyright &copy;
++            <script type="text/javascript">
++                var d = new Date()
++                document.write(d.getFullYear())
++            </script>
++            YouSayWhatWeSayWhere - Eurecom
++        </p>
++        <p>
++            <img style="width: 3%; height: 3%;"
++                src="./HTML5Logo.svg"
++                alt="This page is written in HTML5!" />
++            <img style="border:0;width:88px;height:31px"
++                src="http://jigsaw.w3.org/css-validator/images/vcss"
++                alt="Valid CSS!" />
++        </p>
++    </footer>
++
++
++</div>
++
++</body>
++
++</html>
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/HTML5Logo.svg b/../MattiaAlessio/HTML5Logo.svg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/LICENSE b/../MattiaAlessio/LICENSE
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/README.md b/../MattiaAlessio/README.md
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/cooker.png b/../MattiaAlessio/cooker.png
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/createrecipe.html b/../MattiaAlessio/createrecipe.html
+old mode 100755
+new mode 100644
+index a0cad39..7414cca
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/createrecipe.html
++++ b/../MattiaAlessio/createrecipe.html
+@@ -176,8 +176,8 @@ function Logout(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/food_database.js b/../MattiaAlessio/food_database.js
+old mode 100755
+new mode 100644
+index b812aa3..05cb161
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/food_database.js
++++ b/../MattiaAlessio/food_database.js
+@@ -52,7 +52,7 @@ function LoadFood_database(){
+ 	food.videoFrags = ""
+ 	food.ingredients = ["lasagne : 300 grams in total", "250 grams of bacon", "1 red pepper", "olive oil : 6 tablespoons ", "1 golden onion thinly sliced", "butter : 30g"];
+ 	food.rating = "4";
+-	food.description = "Place in a large skillet thinly sliced onion , chili chopped (no seeds) and the oil and wither all at low fire. Then add the diced bacon and sauté until golden brown : remove it from the pan and set it aside. Finally , pour the tomatoes in the pan or if you prefer, fresh ones peeled and seeds . Season with salt and cook over high heat for 8-10 minutes , then add the bacon and let it warm. For the white sauce , melt in a saucepan over low heat the butter, add the flour and stir with a wooden spoon until a thick roux and add a little milk , stirring constantly with wire , so creamy and without lumps."
++	food.description = "Place in a large skillet thinly sliced onion , chili chopped (no seeds) and the oil and wither all at low fire. Then add the diced bacon and saute until golden brown : remove it from the pan and set it aside. Finally , pour the tomatoes in the pan or if you prefer, fresh ones peeled and seeds . Season with salt and cook over high heat for 8-10 minutes , then add the bacon and let it warm. For the white sauce , melt in a saucepan over low heat the butter, add the flour and stir with a wooden spoon until a thick roux and add a little milk , stirring constantly with wire , so creamy and without lumps."
+ 	
+ 	foods[4]=food
+ 	
+@@ -116,7 +116,7 @@ function LoadFood_database(){
+ 	food.photo = "./photo/food11.jpg";
+ 	food.video = ""
+ 	food.videoFrags = ""
+-	food.ingredients = ["beef (or pork)", "chopped : 50g", "loaf of bread crumb (type Puglia) 100g", "ground pepper", "salt", "chopped parsley : 2 tablespoons", "garlic : 3 cloves"];
++	food.ingredients = ["beef (or pork)", "chopped : 50g", "loaf of bread crumb 100g", "ground pepper", "salt", "chopped parsley : 2 tablespoons", "garlic : 3 cloves"];
+ 	food.rating = "3";
+ 	food.description = "First, to prepare the meatballs to the sauce, remove the crust to a piece of loaf and cut into 100 grams of bread into squares, which will place in a blender and reduce to crumbs. Put in a bowl the minced meat (beef or pork, if you prefer), you can add the sausage deprived of the outer skin and add the finely chopped bread, add the parmesan, pecorino, parsley, eggs, salt, pepper and nutmeg."
+ 	
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/go.jpeg b/../MattiaAlessio/go.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/index.html b/../MattiaAlessio/index.html
+old mode 100755
+new mode 100644
+index 8b21345..a93506e
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/index.html
++++ b/../MattiaAlessio/index.html
+@@ -89,8 +89,8 @@ function Logout(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/login.html b/../MattiaAlessio/login.html
+old mode 100755
+new mode 100644
+index 9654db8..450dc5f
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/login.html
++++ b/../MattiaAlessio/login.html
+@@ -67,8 +67,8 @@ function LogUser(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>
+@@ -93,6 +93,7 @@ function LogUser(){
+ 		<form id="invalid_pass" style="display:none">
+             <div>
+ 			<h1> Incorrect password!</h1>
++			<a href="./login.html">Login</a>
+ 			</div>
+ 		</form>
+ 		
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/logo.png b/../MattiaAlessio/logo.png
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/logo.xcf b/../MattiaAlessio/logo.xcf
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/main_image.jpeg b/../MattiaAlessio/main_image.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/minus.jpeg b/../MattiaAlessio/minus.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/newPhotos/food14.jpg b/../MattiaAlessio/newPhotos/food14.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/newPhotos/food15.jpeg b/../MattiaAlessio/newPhotos/food15.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/newPhotos/food16.jpg b/../MattiaAlessio/newPhotos/food16.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food1.jpg b/../MattiaAlessio/photo/food1.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food1.png b/../MattiaAlessio/photo/food1.png
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food10.jpg b/../MattiaAlessio/photo/food10.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food11.jpg b/../MattiaAlessio/photo/food11.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food12.jpg b/../MattiaAlessio/photo/food12.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food13.jpg b/../MattiaAlessio/photo/food13.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food2.jpg b/../MattiaAlessio/photo/food2.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food3.jpg b/../MattiaAlessio/photo/food3.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food4.jpg b/../MattiaAlessio/photo/food4.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food5.jpg b/../MattiaAlessio/photo/food5.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food6.jpg b/../MattiaAlessio/photo/food6.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food7.jpg b/../MattiaAlessio/photo/food7.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food8.JPG b/../MattiaAlessio/photo/food8.JPG
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/food9.jpg b/../MattiaAlessio/photo/food9.jpg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/recipe1.jpeg b/../MattiaAlessio/photo/recipe1.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/recipe2.jpeg b/../MattiaAlessio/photo/recipe2.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/recipe3.jpeg b/../MattiaAlessio/photo/recipe3.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/recipe4.jpeg b/../MattiaAlessio/photo/recipe4.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/photo/recipe5.jpeg b/../MattiaAlessio/photo/recipe5.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/plus.jpeg b/../MattiaAlessio/plus.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recently_view.html b/../MattiaAlessio/recently_view.html
+old mode 100755
+new mode 100644
+index 0cfab7b..30c3672
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recently_view.html
++++ b/../MattiaAlessio/recently_view.html
+@@ -140,8 +140,8 @@ if(ev.target.id=='trash'){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>
+@@ -180,14 +180,13 @@ if(ev.target.id=='trash'){
+ 		</figure>
+ 		</div>
+ 		
++			<form id="no_result" style="display:none;">
++            <div style="margin:auto; width:400px;">
++			<h1> No result!</h1>
++			</div>
++			</form>
+ 		
+ 		</div>
+-		
+-		
+-            <div id="no_result" style="display:none; width:200px; height:300px; margin:auto;">
+-			<h1>No result!</h1>
+-			</div>
+-
+     <footer class="box" style="text-align: center;">
+         <ul>
+ 			<li><a href="#">Home</a></li>
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recipe.html b/../MattiaAlessio/recipe.html
+old mode 100755
+new mode 100644
+index 7886589..2ca4a74
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recipe.html
++++ b/../MattiaAlessio/recipe.html
+@@ -203,8 +203,8 @@ function Logout(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>	
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recommendation.html b/../MattiaAlessio/recommendation.html
+old mode 100755
+new mode 100644
+index 71eaec8..148df31
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/recommendation.html
++++ b/../MattiaAlessio/recommendation.html
+@@ -504,8 +504,8 @@ function Logout(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>	
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/signup.html b/../MattiaAlessio/signup.html
+old mode 100755
+new mode 100644
+index cb98921..9c8d04e
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/signup.html
++++ b/../MattiaAlessio/signup.html
+@@ -67,8 +67,8 @@ function StoreUser(){
+             </ul>
+         
+             <ul style="border: 0px; margin: 0px;">
+-                <li><a href="#">About us</a></li>
+-                <li><a href="#">Give your feedback</a></li>
++                <li><a href="./About_us.html">About us</a></li>
++                <li><a href="./Give_your_feedback.html">Give your feedback</a></li>
+                 <li><a href="#">Demo</a></li>
+             </ul>
+     </nav>
+@@ -94,12 +94,14 @@ function StoreUser(){
+ 		<form id="correct" style="display:none">
+             <div>
+ 			<h1>You are signed in please now log you in!</h1>
++			<a href="./login.html">Login</a>
+ 			</div>
+ 		</form>
+ 		
+ 		<form id="not_correct" style="display:none">
+             <div>
+ 			<h1>You are already signed in please go directly to login page!</h1>
++			<a href="./login.html">Login</a>
+ 			</div>
+ 		</form>
+ 
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/stylesheet.css b/../MattiaAlessio/stylesheet.css
+old mode 100755
+new mode 100644
+index 002006c..5c713eb
+--- a/home/lorenzo/latestVersion/yswhatwswhere.github.io/stylesheet.css
++++ b/../MattiaAlessio/stylesheet.css
+@@ -609,3 +609,34 @@ footer ul li:hover {
+ 	color: gold;
+ }
+ ---------------------------------
++.grow {
++ margin: 20px 20px 20px 20px;
++  -webkit-transition: all 1.5s ease;
++     -moz-transition: all 1.5s ease;
++       -o-transition: all 1.5s ease;
++      -ms-transition: all 1.5s ease;
++          transition: all 1.5s ease;
++}
++.grow img {
++  border: 2px solid black;
++  background: white;
++  padding: 10px;
++ }
++.grow img:hover {
++  width: 150px;
++  height: 150px;
++}
++
++#contact{
++  width: 250px;
++  margin: auto;
++}
++
++#contact img {
++	width:50px;
++	height:50px;
++}
++
++#contact img:hover {
++    border-bottom: 5px solid #FF831C;
++}
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/trash.jpeg b/../MattiaAlessio/trash.jpeg
+old mode 100755
+new mode 100644
+diff --git a/home/lorenzo/latestVersion/yswhatwswhere.github.io/video/pizza.webm b/../MattiaAlessio/video/pizza.webm
+old mode 100755
+new mode 100644
