@@ -10,11 +10,11 @@ from {background:blue;}
 to {background:orange;}
 }
 
-@-webkit-keyframes changeColor /* Safari and Chrome */
+/*@-webkit-keyframes changeColor
 {
 from {background:blue;}
 to {background:orange;}
-}
+}*/
 
 #main_container{
     width: 80%;
@@ -75,7 +75,7 @@ to {left:100%;
           transform: rotate(720deg);}
 }
 
-@-webkit-keyframes moveLogo /* Safari and Chrome */
+/*@-webkit-keyframes moveLogo
 {
 from {left:0%;
   -webkit-transform: rotate(-10deg);
@@ -90,7 +90,7 @@ to {left:100%;
        -o-transform: rotate(720deg);
       -ms-transform: rotate(720deg);
           transform: rotate(720deg);}
-}
+}*/
 
 #title p {
     text-shadow: 5px 5px 5px #F44515;
