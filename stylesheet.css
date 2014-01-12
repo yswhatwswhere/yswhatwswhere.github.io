@@ -512,6 +512,7 @@ ul#vfrags li a {
     text-decoration: none;
     width: 100px;
     text-align: center;
+    cursor: pointer;
 }
   
 ul#vfrags li:hover {
