@@ -10,13 +10,6 @@ var myOptions = {
   };
 var market;
 var place;
-/*var dist;
-var distT;
-var time;
-var timeT;
-var price;
-var quality;
-var isin;*/
 var markers = [];
 var currAddr = "";
 var service;
@@ -41,32 +34,12 @@ function initialize() {
 }
 
 function callback(results, status) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-/*    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }*/
-  }
-
     place = results;
-/*    price = Array(results.length);
-    for (var i = 0; i < price.length; i++)
-        price[i] = Math.floor((Math.random()*30)+1);
-    quality = Array(results.length);
-    for (var i = 0; i < quality.length; i++)
-        quality[i] = Math.floor((Math.random()*5)+1);
-    isin = Array(results.length);
-    for (var i = 0; i < price.length; i++)
-        price[i] = 1;
-    dist = Array(results.length);
-    time = Array(results.length);
-    distT = Array(results.length);
-    timeT = Array(results.length);*/
+
     var dest = Array(results.length);
-//    var orig = Array(results.length);
-    for (var i = 0; i < results.length; i++) {
+    for (var i = 0; i < results.length; i++)
         dest[i] = results[i].geometry.location;
-  //      orig[i] = sophia;
-    }
+
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {

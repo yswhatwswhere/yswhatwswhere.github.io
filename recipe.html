@@ -105,17 +105,7 @@ function info(){
     frag_list = document.getElementById("vfrags");
     for (i in frags){
         var newItem = document.createElement("li");
-        //var newSpan = document.createElement("span");
-        //var newLink = document.createElement("a");
-        //newLink.onclick = function() { chapter(i) };
-        //newLink.href = "#";
-        //newLink.innerHTML = frags[i][0];
-        //newItem.appendChild(newLink);
-  //      alert("Hi!");
 		newItem.innerHTML = "<a onclick=\"chapter(&quot;"+frags[i][1]+"&quot;)\">"+frags[i][0]+"</a>";
-        //newSpan.innerHTML = "<a href=\"#\" onclick=\"chapter("+frags[i][1]+")\">"+frags[i][0]+"</a>";
-        //newItem.appendChild(newSpan);
-    //    alert("Ha!");
         frag_list.appendChild(newItem);
     }
 }
@@ -135,7 +125,6 @@ function UpdateInfo(){
 			document.getElementById('info').innerHTML = localStorage.name; 
 			document.getElementsByName('credentials')[0].style.display = 'block';
 			document.getElementsByName('only_login')[0].style.display = 'block';
-//			document.getElementById('Favourite').style.display = 'inline';
 		}else{
 			document.getElementsByName('account')[0].style.display = 'block';
 			document.getElementsByName('credentials')[0].style.display = 'none';
