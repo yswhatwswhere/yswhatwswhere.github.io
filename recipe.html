@@ -91,7 +91,7 @@ function info(){
 	for (i in ingredients){
 		 var newItem = document.createElement("li");                
          var newItemValue = document.createTextNode(ingredients[i]);
-         newItem.itemprop = "ingredients";
+         newItem.setAttribute("itemprop", "ingredients");
          newItem.appendChild(newItemValue);              
          ingredients_list.appendChild(newItem);
 	}

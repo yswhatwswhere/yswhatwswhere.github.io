@@ -99,7 +99,9 @@ function updateResults() {
     var n = 0;
     for (var i = 0; i < market.length; i++) {
             var newItem = document.createElement("li");
-            newItem.innerHTML = market[i].name+", "+market[i].distT+", "+market[i].timeT;
+            newItem.innerHTML = "<span itemprop=\"name\">"+market[i].name+"</span>"+", "+market[i].distT+", "+market[i].timeT;
+            newItem.setAttribute("itemscope", "true");
+            newItem.setAttribute("itemtype", "http://schema.org/LocalBusiness");
             list.appendChild(newItem);
             createMarker(market[i].info);
             n++;
