@@ -208,7 +208,6 @@ to {left:100%;
 
     -moz-user-select: none;
     -khtml-user-select: none;
-    user-select: none;
 
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
@@ -697,7 +696,7 @@ footer ul li:hover {
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
----------------------------------
+
 .grow {
  margin: 20px 20px 20px 20px;
   -webkit-transition: all 1.5s ease;
@@ -756,22 +755,3 @@ table.hovertable td {
 	border-color: #a9c6c9;
 }
 
----------------------------------
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating  span {
-  display: inline-block;
-  width: 10px;
-}
-.rating  span:hover,
-.rating  span:hover ~ span {
-  color: transparent;
-}
-.rating span:hover:before,
-.rating span:hover ~ span:before {
-    content: "\2605";
-	color: gold;
-}
----------------------------------
