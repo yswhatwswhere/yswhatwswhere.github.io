@@ -85,6 +85,8 @@ to {left:100%;
 #home_main {
     margin-top: 20px;
     margin-left: 180px;
+    padding-left: auto;
+    padding-right: auto;
     padding-bottom: 20px;
     text-align: center;
 }
@@ -324,7 +326,7 @@ nav a:active {
 
 .slide a {
     margin: 5px;
-    float: left;
+    display:inline-block;
     width: 100px;
     height: 100px;
     position: relative;
