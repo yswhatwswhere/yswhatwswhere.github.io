@@ -86,22 +86,49 @@ index = parseInt(data);
 if(ev.target.id=='trash'){
 	document.getElementsByTagName('canvas')[index].style.display="none";
 	document.getElementsByTagName('figure')[index].style.display="none";
-	array.splice(index, 1);
-	array_name.splice(index, 1);
-	if(array.length==0){
+
+	array[index]="";
+	array_name[index]="";
+
+	if(array_dim(array)==0){
 		localStorage.view =""
 		localStorage.view_name =""
 		document.getElementById('c1').style.display = 'none';
 		document.getElementById('c2').style.display = 'none';
 		document.getElementById('no_result').style.display = 'block';
 	}else{
-		localStorage.view = array.toString();
-		localStorage.view_name = array_name.toString();
+		
+		localStorage.view = updateArray(array).toString();
+		localStorage.view_name = updateArray(array_name).toString();
+
+
 }
 }else{
 		var str = array_name[index]
 		window.location = './recipe.html?dish='+str.replace(/\ /g, '+');
 }
+}
+
+
+function array_dim(array){
+	
+	var l=0
+	for(i=0; i<array.length; i++){
+	if(array[i]!="") l++
+					}
+
+return l;
+}
+
+function updateArray(array){
+	
+	var a = new Array()
+	var l=0
+	for(i=0; i<array.length; i++){
+	if(array[i]!="") a[l++]=array[i]
+					}
+
+return a;
 }
  	
 </script>
@@ -146,7 +173,7 @@ if(ev.target.id=='trash'){
             </ul>
     </nav> 
 	
-        <div id="home_main" style="float:left; display:block; margin-left:10px;">
+        <div id="home_main" style="float:left; dislpay:block; margin-left:10px;">
 		<div id="c1" style="float:left; width:750px;">
 		<figure class="tilt" style="float:left; border: 1px solid #cccccc; display:none;">
 		<canvas draggable="true" ondragstart="drag(event)" id="0" width="150" height="150"></canvas>
@@ -172,11 +199,11 @@ if(ev.target.id=='trash'){
 		
 		<div id="c2" style="clear:left; margin:auto; width:400px;">
 		<figure class="rotate" ondrop="drop(event); this.className = 'rotate';" ondragover="allowDrop(event)" ondragenter="this.className = 'over';" ondragleave="this.className = 'rotate';" style="float:left;">
-		<img src="./go.jpeg" id="play" width="100" height="100" alt="go" />
+		<img src="./go.jpeg" id="play" width="100" height="100"></img>
 		</figure>
 		
 		<figure class="rotate" ondrop="drop(event); this.className = 'rotate'" ondragover="allowDrop(event)" ondragenter="this.className = 'over';" ondragleave="this.className = 'rotate';" style="float:left;">
-		<img src="./trash.jpeg" id="trash" width="100" height="100" alt="trash" />
+		<img src="./trash.jpeg" id="trash" width="100" height="100"></img>
 		</figure>
 		</div>
 		
