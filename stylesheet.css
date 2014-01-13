@@ -2,6 +2,7 @@ body {
     background-color: #ffa200;
 	animation:changeColor 15s infinite;
 	-webkit-animation:changeColor 15s infinite; /* Safari and Chrome */
+    min-width: 1024px;
 }
 
 @keyframes changeColor
@@ -320,8 +321,10 @@ nav a:active {
 }
 
 .slide {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     height: 100px;
+    text-align: center;
 }
 
 .slide a {
@@ -347,6 +350,7 @@ nav a:active {
 }
 
 .slide a:hover img{
+    display: block;
     width: 170%;
     height: 170%;
     position: absolute;
