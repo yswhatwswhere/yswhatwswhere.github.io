@@ -6,7 +6,7 @@
     <title>You Say What We Say Where</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css">
 <script type="text/javascript" src="food_database.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
 <script type="text/javascript" src="locate.js"></script>
 <script>
 
@@ -117,8 +117,9 @@ function Logout(){
                 <li>
                   <input style="text-align: center;" id="address" name="address" type="text" value="" placeholder="Your address">
                 </li>
-                <br />
-                Quality:
+                </ul>
+                <p style="padding-left: 25px;">Quality:</p>
+                <ul>
                 <li id="quality">
                      <input id="radio1" type="radio" name="quality" value="1">
                      <label for="radio1"></label>
@@ -130,9 +131,11 @@ function Logout(){
                      <label for="radio4"></label>
                      <input id="radio5" type="radio" name="quality" value="5">
                      <label for="radio5"></label>
+                     <br />
                 </li>
-                <br />
+                <li>
                 <button style="margin-left: auto; margin-right: auto;" onclick="onUpdate()" type="button">Update</button>
+                </li>
               </ul>
             </fieldset>
         </form>
@@ -140,7 +143,7 @@ function Logout(){
         <div style="float: right; margin-left: 200px;">
         <div id="map-canvas" style="width: 500px; height: 300px;"></div>
         <ul id="markets"></ul>
-        <div />
+        </div>
     </section>
     </div>
 
