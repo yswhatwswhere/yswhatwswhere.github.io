@@ -4,7 +4,7 @@ function LoadFood_database(){
 	var food = new Object();
 	food.name = "Pizza Margherita";
 	food.photo = "./photo/food1.jpg";
-	food.video = "video/pizza.webm";
+	food.video = "http://yswhatwswhere.github.io/video/pizza.webm";
 	food.videoFrags = [["Intro", "#t=0,10"], ["Story", "#t=11,29"],["Ingredients", "#t=31,57"], ["Preparation", "#t=58,160"], ["Baking", "#t=161,174"], ["Conclusion", "#t=175,204"]]
 	food.ingredients = ["flour : 150g", "water : 150ml", "olive oil two spoon", "salt : 5g", "brewer s yeast", "tomato puree : 150ml", "mozzarella : 100g", "basil"]
 	food.rating = "5";
